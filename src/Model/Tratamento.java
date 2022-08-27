@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Tratamento {
     private int id;
-        private Date data_ini;
+    private Date data_ini;
     private Date data_final;
 
 
