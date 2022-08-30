@@ -16,6 +16,7 @@ public class Clinica {
      */
     public static void main(String[] args) {
         System.out.println("teste 2");
+        System.out.println("aaaa");
     }
     
 }
