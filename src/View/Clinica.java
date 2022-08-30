@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clinica;
+package View;
 
 import Controller.ControllerCliente;
-import static Controller.ControllerCliente.cliente;
+//import static Controller.ControllerCliente.cliente;
 import Model.ClienteDAO;
 
 /**
@@ -24,7 +24,15 @@ public class Clinica {
     public static void main(String[] args) {
         
      //   ControllerCliente cliente = new ControllerCliente();
-        System.out.println(cliente()); //cliente();
+     
+     ControllerCliente c = new ControllerCliente();
+     
+     c.cliente(0);
+     c.cliente(1);
+     for(int i=0; i<=c.getSize();i++){
+         System.out.println(c.tostring(i));
+     }
+       // System.out.println(cliente(1)); //cliente();
       //  System.out.println();
         
     }

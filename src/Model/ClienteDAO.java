@@ -31,4 +31,14 @@ public class ClienteDAO {
         cliente.remove(id);
     }
     
+    public void update(int id,String nome, String end, String cep, String email, String telefone){
+        
+        cliente.remove(id);
+        cliente.add(new Cliente(id,nome,end, cep, email, telefone));
+    }
+    
+    public int getSize(){
+        return cliente.size();
+    }
+    
 }

@@ -13,17 +13,30 @@ import Model.ClienteDAO;
 public class ControllerCliente {
     
     
-    public static String cliente(){
+    ClienteDAO clientedao = new ClienteDAO();
+    
+    public void cliente(int id){
         
-        ClienteDAO clientedao = new ClienteDAO();
         
-        clientedao.insert(1,"Bruno","Bende","16151551","babab@baba.com","919191");
         
-       return clientedao.read(0).toString();
+        clientedao.insert(0,"Bruno","Bende","16151551","babab@baba.com","919191");
+        clientedao.insert(1,"xande","huehue","187871781","ahahha@haahha.com","10982981982");
+        
+        
+       
         
     
     
 }
+    
+    public int getSize (){
+        
+        return clientedao.getSize();
+    }
+    
+    public String tostring(int id){
+        return clientedao.read(id).toString();
+    }
     
     
     
