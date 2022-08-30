@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -16,6 +19,20 @@ public class Cliente {
     private String cep;
     private String email;
     private String telefone;
+    private List<Animal> animal = new ArrayList<Animal> (); 
+
+    public List<Animal> getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(List<Animal> animal) {
+        this.animal = animal;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", cep=" + cep + ", email=" + email + ", telefone=" + telefone + ", animal=" + animal + '}';
+    }
 
     public Cliente(int id, String nome, String endereco, String cep, String email, String telefone) {
         this.id = id;

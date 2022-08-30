@@ -5,18 +5,28 @@
  */
 package clinica;
 
+import Controller.ControllerCliente;
+import static Controller.ControllerCliente.cliente;
+import Model.ClienteDAO;
+
 /**
  *
  * @author Bruno
  */
 public class Clinica {
-
+//metodo static pra nao precisar instanciar
+    
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("teste 2");
-        System.out.println("aaaa");
+        
+     //   ControllerCliente cliente = new ControllerCliente();
+        System.out.println(cliente()); //cliente();
+      //  System.out.println();
+        
     }
     
 }
