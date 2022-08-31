@@ -19,15 +19,15 @@ public class Cliente {
     private String cep;
     private String email;
     private String telefone;
-   //private List<Animal> animal = new ArrayList<Animal> (); 
-    private Animal animal;
+   private List<Animal> animal = new ArrayList<Animal> (); 
+   // private Animal animal;
 
-    public Animal getAnimal() {
+    public List<Animal> getAnimal() {
         return animal;
     }
 
     public void setAnimal(Animal animal) {
-        this.animal = animal;
+        this.animal.add(animal);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Cliente {
         this.cep = cep;
         this.email = email;
         this.telefone = telefone;
-        this.animal = a;
+        this.animal.add(a);
     }
 
     public int getId() {

@@ -13,14 +13,12 @@ public class Animal {
     private String nome;
     private char sexo;
     private int idade;
-    private int idCliente;
 
-    public Animal(int id, String nome, char sexo, int idade, int idCliente) {
+    public Animal(int id, String nome, char sexo, int idade) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
-        this.idCliente =idCliente;
     }
 
     public int getId() {
@@ -45,14 +43,6 @@ public class Animal {
 
     public void setSexo(char sexo) {
         this.sexo = sexo;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
     }
 
     public int getIdade() {

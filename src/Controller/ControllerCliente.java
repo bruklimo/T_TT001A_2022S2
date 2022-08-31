@@ -16,21 +16,18 @@ public class ControllerCliente {
     
     
     ClienteDAO clientedao = new ClienteDAO();
+    AnimalDAO animal = new AnimalDAO();
     
-    
-    public void cliente(int id, Animal animal){
+    public void cliente(int id, String nome,int idAnimal){
         
         
-        
-        clientedao.insert(id,"Bruno","Bende","16151551","babab@baba.com","919191",animal);
-       // clientedao.insert(1,"xande","huehue","187871781","ahahha@haahha.com","10982981982");
-        
-        
-       
-        
-    
-    
+        clientedao.insert(id,nome,"Bende","16151551","babab@baba.com","919191",animal.read(idAnimal));
+
 }
+    
+    public void animal (int idAnimal, String nome){
+         animal.insert(idAnimal,nome,'f',39);
+    }
     
     public int getSize (){
         
@@ -41,7 +38,7 @@ public class ControllerCliente {
         return clientedao.read(id).toString();
     }
     
-public Animal getAnimal (int id){
+public String getAnimal (int id){
    return clientedao.getAnimal(id);
     
 }

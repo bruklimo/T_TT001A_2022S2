@@ -41,8 +41,8 @@ public class ClienteDAO {
         return cliente.size();
     }
     
-    public Animal getAnimal(int id){
-        return cliente.get(id).getAnimal();
+    public String getAnimal(int id){
+        return cliente.get(id).getAnimal().toString();
     }
     
 }
