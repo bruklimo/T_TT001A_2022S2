@@ -19,13 +19,14 @@ public class Cliente {
     private String cep;
     private String email;
     private String telefone;
-    private List<Animal> animal = new ArrayList<Animal> (); 
+   //private List<Animal> animal = new ArrayList<Animal> (); 
+    private Animal animal;
 
-    public List<Animal> getAnimal() {
+    public Animal getAnimal() {
         return animal;
     }
 
-    public void setAnimal(List<Animal> animal) {
+    public void setAnimal(Animal animal) {
         this.animal = animal;
     }
 
@@ -34,13 +35,14 @@ public class Cliente {
         return "Cliente{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", cep=" + cep + ", email=" + email + ", telefone=" + telefone + ", animal=" + animal + '}';
     }
 
-    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone) {
+    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone, Animal a) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.cep = cep;
         this.email = email;
         this.telefone = telefone;
+        this.animal = a;
     }
 
     public int getId() {

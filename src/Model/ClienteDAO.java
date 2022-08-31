@@ -16,9 +16,9 @@ public class ClienteDAO {
  private List<Cliente> cliente = new ArrayList<Cliente> ();
  
  
-  public void insert (int id, String nome, String end, String cep, String email, String telefone) {
+  public void insert (int id, String nome, String end, String cep, String email, String telefone, Animal a) {
       
-     cliente.add(new Cliente(id,nome,end, cep, email, telefone));
+     cliente.add(new Cliente(id,nome,end, cep, email, telefone,a));
   }
   
     public Cliente read (int id){
@@ -31,10 +31,10 @@ public class ClienteDAO {
         cliente.remove(id);
     }
     
-    public void update(int id,String nome, String end, String cep, String email, String telefone){
+    public void update(int id,String nome, String end, String cep, String email, String telefone, Animal a){
         
         cliente.remove(id);
-        cliente.add(new Cliente(id,nome,end, cep, email, telefone));
+        cliente.add(new Cliente(id,nome,end, cep, email, telefone, a));
     }
     
     public int getSize(){

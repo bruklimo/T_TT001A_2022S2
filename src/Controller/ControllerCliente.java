@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Model.Animal;
 import Model.ClienteDAO;
 
 /**
@@ -14,13 +15,14 @@ public class ControllerCliente {
     
     
     ClienteDAO clientedao = new ClienteDAO();
+    Animal a = new Animal(0,"xande",'m',38);
     
     public void cliente(int id){
         
         
         
-        clientedao.insert(0,"Bruno","Bende","16151551","babab@baba.com","919191");
-        clientedao.insert(1,"xande","huehue","187871781","ahahha@haahha.com","10982981982");
+        clientedao.insert(id,"Bruno","Bende","16151551","babab@baba.com","919191",a);
+       // clientedao.insert(1,"xande","huehue","187871781","ahahha@haahha.com","10982981982");
         
         
        
