@@ -5,6 +5,7 @@
 package Controller;
 
 import Model.Animal;
+import Model.AnimalDAO;
 import Model.ClienteDAO;
 
 /**
@@ -15,13 +16,13 @@ public class ControllerCliente {
     
     
     ClienteDAO clientedao = new ClienteDAO();
-    Animal a = new Animal(0,"xande",'m',38);
     
-    public void cliente(int id){
+    
+    public void cliente(int id, Animal animal){
         
         
         
-        clientedao.insert(id,"Bruno","Bende","16151551","babab@baba.com","919191",a);
+        clientedao.insert(id,"Bruno","Bende","16151551","babab@baba.com","919191",animal);
        // clientedao.insert(1,"xande","huehue","187871781","ahahha@haahha.com","10982981982");
         
         
@@ -40,6 +41,10 @@ public class ControllerCliente {
         return clientedao.read(id).toString();
     }
     
+public Animal getAnimal (int id){
+   return clientedao.getAnimal(id);
+    
+}
     
     
 }

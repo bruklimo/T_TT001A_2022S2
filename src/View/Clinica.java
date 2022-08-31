@@ -6,6 +6,7 @@
 package View;
 
 import Controller.ControllerCliente;
+import Model.Animal;
 //import static Controller.ControllerCliente.cliente;
 import Model.ClienteDAO;
 import java.util.Scanner;
@@ -28,9 +29,10 @@ public class Clinica {
      
      ControllerCliente c = new ControllerCliente();
      Scanner myInput = new Scanner( System.in );
-     
-     c.cliente(0);
-     c.cliente(1);
+     Animal animal = new Animal(0,"aauauauua",'f',39,0)  ;
+     Animal animal2 = new Animal(0,"a",'f',39,0)  ;
+     c.cliente(0,animal);
+     c.cliente(1,animal2);
    //  c.cliente(2);
      
    //     System.out.println(c.getSize());
@@ -40,7 +42,10 @@ public class Clinica {
      
         System.out.println("Escolha um id de cliente para pegar os animais");
         int a = myInput.nextInt();
-        System.out.println(a);
+       // System.out.println(a);
+        
+        System.out.println(c.getAnimal(a).getNome());
+        
         
        // System.out.println(cliente(1)); //cliente();
       //  System.out.println();
