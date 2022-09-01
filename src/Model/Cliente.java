@@ -19,11 +19,11 @@ public class Cliente {
     private String cep;
     private String email;
     private String telefone;
-   private List<Animal> animal = new ArrayList<Animal> (); 
+   private List<Animal> animal ; 
    // private Animal animal;
 
     public List<Animal> getAnimal() {
-        return animal;
+        return this.animal;
     }
 
     public void setAnimal(Animal animal) {
@@ -32,17 +32,20 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", cep=" + cep + ", email=" + email + ", telefone=" + telefone + ", animal=" + animal + '}';
+        String desc = "Cliente{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", cep=" + cep + ", email=" + email + ", telefone=" + telefone + ", animal=" + animal + '}';
+        String animals = animal.toString();
+        return desc + animals;
     }
+    
 
-    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone, Animal a) {
+    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.cep = cep;
         this.email = email;
         this.telefone = telefone;
-        this.animal.add(a);
+        this.animal=new ArrayList<Animal> ();
     }
 
     public int getId() {

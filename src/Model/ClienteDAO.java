@@ -18,7 +18,7 @@ public class ClienteDAO {
  
   public void insert (int id, String nome, String end, String cep, String email, String telefone, Animal a) {
       
-     cliente.add(new Cliente(id,nome,end, cep, email, telefone,a));
+     cliente.add(id,new Cliente(id,nome,end, cep, email, telefone));
   }
   
     public Cliente read (int id){
@@ -34,15 +34,15 @@ public class ClienteDAO {
     public void update(int id,String nome, String end, String cep, String email, String telefone, Animal a){
         
         cliente.remove(id);
-        cliente.add(new Cliente(id,nome,end, cep, email, telefone, a));
+        cliente.add(new Cliente(id,nome,end, cep, email, telefone));
     }
     
     public int getSize(){
         return cliente.size();
     }
     
-    public String getAnimal(int id){
-        return cliente.get(id).getAnimal().toString();
+    public List<Animal> getAnimal(int id){
+        return cliente.get(id).getAnimal();
     }
     
 }

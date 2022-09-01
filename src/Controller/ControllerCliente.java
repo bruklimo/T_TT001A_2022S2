@@ -6,7 +6,9 @@ package Controller;
 
 import Model.Animal;
 import Model.AnimalDAO;
+import Model.Cliente;
 import Model.ClienteDAO;
+import java.util.List;
 
 /**
  *
@@ -16,18 +18,19 @@ public class ControllerCliente {
     
     
     ClienteDAO clientedao = new ClienteDAO();
-    AnimalDAO animal = new AnimalDAO();
+    Animal animal;
     
     public void cliente(int id, String nome,int idAnimal){
         
         
-        clientedao.insert(id,nome,"Bende","16151551","babab@baba.com","919191",animal.read(idAnimal));
+        clientedao.insert(id,nome,"Bende","16151551","babab@baba.com","919191",animal);
 
 }
     
-    public void animal (int idAnimal, String nome){
-         animal.insert(idAnimal,nome,'f',39);
+    public void animal (int idAnimal, String nome, int idCliente){
+         animal = new Animal(idAnimal,nome,'f',39,idCliente);
     }
+    
     
     public int getSize (){
         
@@ -38,10 +41,15 @@ public class ControllerCliente {
         return clientedao.read(id).toString();
     }
     
-public String getAnimal (int id){
+    public Cliente tostring2(int id){
+        return clientedao.read(id);
+    }
+    
+public List<Animal> getAnimal (int id){
    return clientedao.getAnimal(id);
     
 }
     
+
     
 }
