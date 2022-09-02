@@ -18,38 +18,19 @@ public class ControllerCliente {
     
     
     ClienteDAO clientedao = new ClienteDAO();
-    Animal animal;
     
-    public void cliente(int id, String nome,int idAnimal){
-        
-        
+    public void cliente(int id, String nome, Animal animal){
         clientedao.insert(id,nome,"Bende","16151551","babab@baba.com","919191",animal);
-
 }
-    
-    public void animal (int idAnimal, String nome, int idCliente){
-         animal = new Animal(idAnimal,nome,'f',39,idCliente);
-    }
-    
-    
-    public int getSize (){
-        
+
+    public int getSize (){   
         return clientedao.getSize();
     }
     
     public String tostring(int id){
-        return clientedao.read(id).toString();
-    }
-    
-    public Cliente tostring2(int id){
         return clientedao.read(id);
     }
     
-public List<Animal> getAnimal (int id){
-   return clientedao.getAnimal(id);
-    
-}
-    
-
+ 
     
 }

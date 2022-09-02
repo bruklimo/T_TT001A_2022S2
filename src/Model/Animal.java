@@ -18,7 +18,7 @@ public class Animal {
 
   
 
-    public Animal(int id, String nome, char sexo, int idade, int idCliente) {
+    public Animal(int id, String nome, char sexo, int idade) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;

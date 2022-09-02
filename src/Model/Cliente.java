@@ -19,8 +19,7 @@ public class Cliente {
     private String cep;
     private String email;
     private String telefone;
-   private List<Animal> animal ; 
-   // private Animal animal;
+    private List<Animal> animal=new ArrayList<Animal>() ; 
 
     public List<Animal> getAnimal() {
         return this.animal;
@@ -41,14 +40,14 @@ public class Cliente {
     }
     
 
-    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone) {
+    public Cliente(int id, String nome, String endereco, String cep, String email, String telefone, Animal animal) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.cep = cep;
         this.email = email;
         this.telefone = telefone;
-        this.animal=new ArrayList<Animal> ();
+         this.animal.add(animal);
     }
 
     public int getId() {
