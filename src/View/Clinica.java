@@ -5,9 +5,7 @@
  */
 package View;
 
-import Controller.ControllerCliente;
 import Model.Animal;
-import Model.Cliente;
 import Model.ClienteDAO;
 import java.util.Scanner;
 
@@ -15,35 +13,27 @@ import java.util.Scanner;
  *
  * @author Bruno
  */
-public class Clinica {
-//metodo static pra nao precisar instanciar
-    
-    
-    
+public class Clinica {    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
      
      ClienteDAO controllerCliente = new ClienteDAO();
-     Animal c = new Animal(1,"a",'a',1);
-     Animal b = new Animal(100,"a",'a',1);
-     Animal d = new Animal(1111111,"a",'a',1);
-     controllerCliente.insert(0, "Bruno","aaa","aaa","aaa","aaa",c);
-     controllerCliente.insert(1,"ana","aaa","aaa","aaa","aaa",b);
-     
-     controllerCliente.insertA(0, d);
-     //controllerCliente.insert(0, "Bruno","aaa","aaa","aaa","aaa",d);
+     Animal juqui = new Animal(1,"juqui",'f',1);
+     Animal nick = new Animal(2,"nick",'m',2);
+     Animal puf = new Animal(3,"puf",'m',3);
+     controllerCliente.insertCliente(0, "Bruno","Rua aimores","130090","bruno@bruno@.com","19994198488",juqui);
+     controllerCliente.insertCliente(1,"Ana","Rua baba","1298198","ana@anan.com","22995566",nick);
+     controllerCliente.insertAnimal(0, puf);
      
      for(int i=0; i<controllerCliente.getSize();i++){
-         System.out.println(controllerCliente.read(i));
+         System.out.println(controllerCliente.readCliente(i));
      }
         Scanner myInput = new Scanner( System.in );
-        System.out.println("Escolha um id de cliente para pegar os animais");
+        System.out.println("Escolha um ID de cliente para listar os animais que possui:");
         int a = myInput.nextInt();
-        
-        
-        System.out.println(controllerCliente.retornaA(a).toString());
+        System.out.println(controllerCliente.retornaAimal(a).toString());
 
     }
     

@@ -28,8 +28,7 @@ public class Cliente {
     public void setAnimal(Animal animal) {
         if(!animal.getNome().isBlank()){
             this.animal.add(animal);
-        }
-        
+        }  
     }
 
     @Override
@@ -38,7 +37,6 @@ public class Cliente {
         String animals = animal.toString();
         return desc + animals;
     }
-    
 
     public Cliente(int id, String nome, String endereco, String cep, String email, String telefone, Animal animal) {
         this.id = id;

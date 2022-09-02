@@ -16,31 +16,39 @@ public class ClienteDAO {
  private List<Cliente> cliente = new ArrayList<Cliente> ();
  Cliente cli;
  
-  public void insert (int id, String nome, String end, String cep, String email, String telefone, Animal a) {
+  public void insertCliente (int id, String nome, String end, String cep, String email, String telefone, Animal a){
       
      cliente.add(id,new Cliente(id,nome,end, cep, email, telefone, a));
   }
   
   
-  public void insertA (int id, Animal a){
-      
-     cli= cliente.get(id);
+  public void insertAnimal (int id, Animal a){
+     cli=cliente.get(id);
      cli.setAnimal(a);
-      
-      
   }
   
-    public String read (int id){
-      
+    public String readCliente (int id){
      return cliente.get(id).toString();
   }
     
-    public List<Animal> retornaA(int id){
+    public List<Animal> retornaAimal(int id){
         return cliente.get(id).getAnimal();
     }
   
     public int getSize(){
         return cliente.size();
+    }
+    
+    public void deleteCliente (int id){
+        
+        cliente.remove(id);
+    }
+    
+    public void updateCliente(int id, String nome, String end, String cep, String email, String telefone, Animal a){
+        
+        cliente.remove(id);
+        cliente.add(id,new Cliente(id,nome,end, cep, email, telefone, a));
+        
     }
     
     

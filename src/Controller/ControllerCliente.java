@@ -20,7 +20,7 @@ public class ControllerCliente {
     ClienteDAO clientedao = new ClienteDAO();
     
     public void cliente(int id, String nome, Animal animal){
-        clientedao.insert(id,nome,"Bende","16151551","babab@baba.com","919191",animal);
+        clientedao.insertCliente(id,nome,"Bende","16151551","babab@baba.com","919191",animal);
 }
 
     public int getSize (){   
@@ -28,7 +28,7 @@ public class ControllerCliente {
     }
     
     public String tostring(int id){
-        return clientedao.read(id);
+        return clientedao.readCliente(id);
     }
     
  

@@ -16,22 +16,22 @@ public class AnimalDAO {
      private List<Animal> animal = new ArrayList<Animal> ();
  
  
-  public void insert (int id, String nome, char sexo, int idade) {
+  public void insertAnimal (int id, String nome, char sexo, int idade) {
       
      animal.add(new Animal(id,nome,sexo,idade));
   }
   
-    public Animal read (int id){
+    public Animal readAnimal (int id){
       
      return animal.get(id);
   }
     
-    public void delete (int id){
+    public void deleteAnimal (int id){
         
         animal.remove(id);
     }
     
-    public void update(int id, String nome, char sexo, int idade){
+    public void updateAnimal(int id, String nome, char sexo, int idade){
         
         animal.remove(id);
         animal.add(new Animal(id,nome,sexo,idade));
