@@ -13,22 +13,16 @@ public class Animal {
     private String nome;
     private char sexo;
     private int idade;
-    private int idCliente;
 
-    public int getIdCliente() {
-        return idCliente;
-    }
+  
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
+  
 
     public Animal(int id, String nome, char sexo, int idade, int idCliente) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
-        this.idCliente=idCliente;
     }
 
     public int getId() {
@@ -65,7 +59,7 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" + "id=" + id + ", nome=" + nome + ", sexo=" + sexo + ", idade=" + idade + ", idCliente=" + idCliente + '}';
+        return "Animal{" + "id=" + id + ", nome=" + nome + ", sexo=" + sexo + ", idade=" + idade + '}';
     }
 
 

@@ -4,6 +4,7 @@
  */
 package Model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -12,14 +13,18 @@ import java.util.Date;
  */
 public class Tratamento {
     private int id;
-    private Date data_ini;
-    private Date data_final;
+    private String nome;
+    private Calendar data_ini;
+    private Calendar data_final;
+    private int idAnimal;
+    private boolean terminou;
 
+    public int getIdAnimal() {
+        return idAnimal;
+    }
 
-    public Tratamento(int id, Date data_ini, Date data_final) {
-        this.id = id;
-        this.data_ini = data_ini;
-        this.data_final = data_final;
+    public void setIdAnimal(int idAnimal) {
+        this.idAnimal = idAnimal;
     }
 
     public int getId() {
@@ -30,24 +35,47 @@ public class Tratamento {
         this.id = id;
     }
 
-  
+    public String getNome() {
+        return nome;
+    }
 
-    public Date getData_ini() {
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Calendar getData_ini() {
         return data_ini;
     }
 
-    public void setData_ini(Date data_ini) {
+    public void setData_ini(Calendar data_ini) {
         this.data_ini = data_ini;
     }
 
-    public Date getData_final() {
+    public Calendar getData_final() {
         return data_final;
     }
 
-    public void setData_final(Date data_final) {
+    public void setData_final(Calendar data_final) {
         this.data_final = data_final;
     }
-    
-    
-    
+
+    public boolean isTerminou() {
+        return terminou;
+    }
+
+    public void setTerminou(boolean terminou) {
+        this.terminou = terminou;
+    }
+
+    public Tratamento(int id, String nome, Calendar data_ini, Calendar data_final, int idAnimal, boolean terminou) {
+        this.id = id;
+        this.nome = nome;
+        this.data_ini = data_ini;
+        this.data_final = data_final;
+        this.idAnimal = idAnimal;
+        this.terminou = terminou;
+    }
+
+
+
 }

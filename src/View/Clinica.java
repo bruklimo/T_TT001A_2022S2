@@ -53,9 +53,9 @@ public class Clinica {
      Animal b1 = new Animal(200,"a",'a',1,1);
     c.setAnimal(a);
     c.setAnimal(b);
-    c1.setAnimal(b1);
+ //   c1.setAnimal(b1);
    // c.getAnimal();
-        System.out.println(c1.getAnimal().get(0));
+        System.out.println(c);
      //   System.out.println(c.toString());
     }
     

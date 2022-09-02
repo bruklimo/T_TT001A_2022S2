@@ -12,14 +12,26 @@ package Model;
 public class Exame {
     private int id;
     private String descricao;
+    private int idConsulta;
 
-    public Exame(int id, String descricao) {
-        this.id = id;
-        this.descricao = descricao;
-    }
+   
 
     public int getId() {
         return id;
+    }
+
+    public Exame(int id, String descricao, int idConsulta) {
+        this.id = id;
+        this.descricao = descricao;
+        this.idConsulta = idConsulta;
+    }
+
+    public int getIdConsulta() {
+        return idConsulta;
+    }
+
+    public void setIdConsulta(int idConsulta) {
+        this.idConsulta = idConsulta;
     }
 
     public void setId(int id) {

@@ -27,12 +27,15 @@ public class Cliente {
     }
 
     public void setAnimal(Animal animal) {
-        this.animal.add(animal);
+        if(!animal.getNome().isBlank()){
+            this.animal.add(animal);
+        }
+        
     }
 
     @Override
     public String toString() {
-        String desc = "Cliente{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", cep=" + cep + ", email=" + email + ", telefone=" + telefone + ", animal=" + animal + '}';
+        String desc = "Cliente{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", cep=" + cep + ", email=" + email + ", telefone=" + telefone + '}';
         String animals = animal.toString();
         return desc + animals;
     }
