@@ -5,10 +5,7 @@
 package Controller;
 
 import Model.Animal;
-import Model.AnimalDAO;
-import Model.Cliente;
 import Model.ClienteDAO;
-import java.util.List;
 
 /**
  *

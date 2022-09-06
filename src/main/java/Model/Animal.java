@@ -13,6 +13,8 @@ public class Animal {
     private String nome;
     private char sexo;
     private int idade;
+    private int idEspecie;
+    private int idCliente;
 
 
     public Animal(int id, String nome, char sexo, int idade) {

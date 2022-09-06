@@ -1,9 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
-package View;
+
+package com.mycompany.clinica2;
 
 import Model.Animal;
 import Model.ClienteDAO;
@@ -13,13 +13,11 @@ import java.util.Scanner;
  *
  * @author Bruno
  */
-public class Clinica {    
-    /**
-     * @param args the command line arguments
-     */
+public class Clinica2 {
+
     public static void main(String[] args) {
-     
-     ClienteDAO controllerCliente = new ClienteDAO();
+        
+            ClienteDAO controllerCliente = new ClienteDAO();
      Animal juqui = new Animal(1,"juqui",'f',1);
      Animal nick = new Animal(2,"nick",'m',2);
      Animal puf = new Animal(3,"puf",'m',3);
@@ -36,5 +34,12 @@ public class Clinica {
         System.out.println(controllerCliente.retornaAimal(a).toString());
 
     }
-    
 }
+        
+        
+        
+        
+    //    View.Clinica.main(args);
+        
+  //  }
+//}
