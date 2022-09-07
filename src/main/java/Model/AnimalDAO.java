@@ -16,9 +16,9 @@ public class AnimalDAO {
      private List<Animal> animal = new ArrayList<Animal> ();
  
  
-  public void insertAnimal (int id, String nome, char sexo, int idade) {
+  public void insertAnimal (int id, String nome, char sexo, int idade, int idCliente, int idEspecie) {
       
-     animal.add(new Animal(id,nome,sexo,idade));
+     animal.add(new Animal(id,nome,sexo,idade,idCliente,idEspecie));
   }
   
     public Animal readAnimal (int id){
@@ -31,10 +31,10 @@ public class AnimalDAO {
         animal.remove(id);
     }
     
-    public void updateAnimal(int id, String nome, char sexo, int idade){
+    public void updateAnimal(int id, String nome, char sexo, int idade, int idCliente, int idEspecie){
         
         animal.remove(id);
-        animal.add(new Animal(id,nome,sexo,idade));
+        animal.add(new Animal(id,nome,sexo,idade,idCliente, idEspecie));
     }
     
     public int getSize(){

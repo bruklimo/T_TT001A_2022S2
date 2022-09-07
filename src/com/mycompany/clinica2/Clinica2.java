@@ -14,13 +14,13 @@ import java.util.Scanner;
  * @author Bruno
  */
 public class Clinica2 {
-
+ 
     public static void main(String[] args) {
-        
-            ClienteDAO controllerCliente = new ClienteDAO();
-     Animal juqui = new Animal(1,"juqui",'f',1);
-     Animal nick = new Animal(2,"nick",'m',2);
-     Animal puf = new Animal(3,"puf",'m',3);
+   /*     
+           ClienteDAO controllerCliente ;
+     Animal juqui = new Animal(1,"juqui",'f',1,0,1);
+     Animal nick = new Animal(2,"nick",'m',2,0,1);
+     Animal puf = new Animal(3,"puf",'m',3,0,1);
      controllerCliente.insertCliente(0, "Bruno","Rua aimores","130090","bruno@bruno@.com","19994198488",juqui);
      controllerCliente.insertCliente(1,"Ana","Rua baba","1298198","ana@anan.com","22995566",nick);
      controllerCliente.insertAnimal(0, puf);
@@ -34,8 +34,11 @@ public class Clinica2 {
         System.out.println(controllerCliente.retornaAimal(a).toString());
 
     }
+*/
+   
+        System.out.println("aa");
 }
-        
+}       
         
         
         

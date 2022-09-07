@@ -2,15 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+//package Controller;
 
-import Model.Animal;
-import Model.ClienteDAO;
+//import Model.Animal;
+//import Model.ClienteDAO;
 
 /**
  *
  * @author Bruno
  */
+
+/*
 public class ControllerCliente {
     
     
@@ -31,3 +33,4 @@ public class ControllerCliente {
  
     
 }
+*/
