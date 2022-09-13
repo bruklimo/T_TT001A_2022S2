@@ -1,16 +1,15 @@
-package Model;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package Model;
 
 /**
  *
- * @author b167460
+ * @author Bruno
  */
 public class Exame {
-    private int id;
+     private int id;
     private String descricao;
     private int idConsulta;
 
@@ -45,6 +44,5 @@ public class Exame {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
     
 }

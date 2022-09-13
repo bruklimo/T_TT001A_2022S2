@@ -8,10 +8,10 @@ import java.util.Calendar;
 
 /**
  *
- * @author b167460
+ * @author Bruno
  */
 public class Tratamento {
-    private int id;
+     private int id;
     private String nome;
     private Calendar data_ini;
     private Calendar data_final;
@@ -75,6 +75,5 @@ public class Tratamento {
         this.terminou = terminou;
     }
 
-
-
+    
 }

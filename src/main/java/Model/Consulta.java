@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 /**
  *
- * @author b167460
+ * @author Bruno
  */
 public class Consulta {
     private int id;
@@ -94,8 +94,5 @@ public class Consulta {
     public void setHora(int hora) {
         this.hora = hora;
     }
-
-   
-    
     
 }

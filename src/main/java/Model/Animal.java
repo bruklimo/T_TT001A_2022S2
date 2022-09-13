@@ -6,10 +6,11 @@ package Model;
 
 /**
  *
- * @author b167460
+ * @author Bruno
  */
 public class Animal {
-    private int id;
+    
+     private int id;
     private String nome;
     private char sexo;
     private int idade;

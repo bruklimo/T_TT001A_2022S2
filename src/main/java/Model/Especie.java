@@ -6,10 +6,10 @@ package Model;
 
 /**
  *
- * @author b167460
+ * @author Bruno
  */
 public class Especie {
-    private int id;
+      private int id;
     private String nome;
 
     public Especie(int id, String nome) {
@@ -32,6 +32,5 @@ public class Especie {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
     
 }

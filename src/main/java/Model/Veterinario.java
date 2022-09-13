@@ -6,10 +6,10 @@ package Model;
 
 /**
  *
- * @author b167460
+ * @author Bruno
  */
 public class Veterinario {
-     private int id;
+       private int id;
     private String nome;
     private String email;
     private String telefone;

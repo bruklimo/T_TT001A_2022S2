@@ -12,7 +12,6 @@ import java.util.List;
  * @author Bruno
  */
 public class AnimalDAO {
-    
      private List<Animal> animal = new ArrayList<Animal> ();
  
  

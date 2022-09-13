@@ -1,16 +1,28 @@
-
-// DAO Implementation for SQLite.
-/**
- * @author Prof. Dr. Plínio Vilela - prvilela@unicamp.br
- * @date 16 de Agosto de 2021
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import java.sql.*;
+package Model;
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public abstract class DAO {
-    public static final String DBURL = "jdbc:sqlite:vet2021.db";
+/**
+ *
+ * @author Bruno
+ */
+public class DAO {
+     public static final String DBURL = "jdbc:sqlite:vet2021.db";
+    
+ //  public static final String DBURL = "sqlite-jdbc";
     private static Connection con;
     protected static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -75,60 +87,74 @@ public abstract class DAO {
         try {
             PreparedStatement stmt;
             // Table client:
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS cliente( \n"
-                    + "id INTEGER PRIMARY KEY, \n"
-                    + "nome VARCHAR, \n"
-                    + "end VARCHAR, \n"
-                    + "cep VARCHAR, \n"
-                    + "email VARCHAR, \n"
-                    + "telefone VARCHAR); \n");
+            stmt = DAO.getConnection().prepareStatement("""
+                                                        CREATE TABLE IF NOT EXISTS cliente( 
+                                                        id INTEGER PRIMARY KEY, 
+                                                        nome VARCHAR, 
+                                                        end VARCHAR, 
+                                                        cep VARCHAR, 
+                                                        email VARCHAR, 
+                                                        telefone VARCHAR); 
+                                                        """);
             executeUpdate(stmt);
             // Table animal:
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS animal( \n"
-                    + "id INTEGER PRIMARY KEY, \n"
-                    + "nome VARCHAR, \n"
-                    + "anoNasc INTEGER, \n"
-                    + "sexo VARCHAR, \n"
-                    + "id_especie INTEGER, \n"
-                    + "id_cliente INTEGER); \n");
+            stmt = DAO.getConnection().prepareStatement("""
+                                                        CREATE TABLE IF NOT EXISTS animal( 
+                                                        id INTEGER PRIMARY KEY, 
+                                                        nome VARCHAR, 
+                                                        anoNasc INTEGER, 
+                                                        sexo VARCHAR, 
+                                                        id_especie INTEGER, 
+                                                        id_cliente INTEGER); 
+                                                        """);
             executeUpdate(stmt);
             // Table species:
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS especie( \n"
-                    + "id INTEGER PRIMARY KEY, \n"
-                    + "nome VARCHAR); \n");
+            stmt = DAO.getConnection().prepareStatement("""
+                                                        CREATE TABLE IF NOT EXISTS especie( 
+                                                        id INTEGER PRIMARY KEY, 
+                                                        nome VARCHAR); 
+                                                        """);
             executeUpdate(stmt);
             // Table vet:
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS vet( \n"
-                    + "id INTEGER PRIMARY KEY, \n"
-                    + "nome VARCHAR, \n"
-                    + "email VARCHAR, \n"
-                    + "telefone VARCHAR); \n");
+            stmt = DAO.getConnection().prepareStatement("""
+                                                        CREATE TABLE IF NOT EXISTS vet( 
+                                                        id INTEGER PRIMARY KEY, 
+                                                        nome VARCHAR, 
+                                                        email VARCHAR, 
+                                                        telefone VARCHAR); 
+                                                        """);
             executeUpdate(stmt);        
             // Table treatment:
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS tratamento( \n"
-                    + "id INTEGER PRIMARY KEY, \n"
-                    + "id_animal INTEGER, \n"
-                    + "nome VARCHAR, \n"
-                    + "dataIni TEXT, \n"
-                    + "dataFim TEXT, \n"
-                    + "terminado INTEGER); \n");
+            stmt = DAO.getConnection().prepareStatement("""
+                                                        CREATE TABLE IF NOT EXISTS tratamento( 
+                                                        id INTEGER PRIMARY KEY, 
+                                                        id_animal INTEGER, 
+                                                        nome VARCHAR, 
+                                                        dataIni TEXT, 
+                                                        dataFim TEXT, 
+                                                        terminado INTEGER); 
+                                                        """);
             executeUpdate(stmt);
             // Table appointment:
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS consulta( \n"
-                    + "id INTEGER PRIMARY KEY, \n"
-                    + "data TEXT, \n"
-                    + "horario VARCHAR, \n"
-                    + "comentario VARCHAR, \n"
-                    + "id_animal INTEGER, \n"
-                    + "id_vet INTEGER, \n"
-                    + "id_tratamento INTEGER, \n"
-                    + "terminado INTEGER); \n");
+            stmt = DAO.getConnection().prepareStatement("""
+                                                        CREATE TABLE IF NOT EXISTS consulta( 
+                                                        id INTEGER PRIMARY KEY, 
+                                                        data TEXT, 
+                                                        horario VARCHAR, 
+                                                        comentario VARCHAR, 
+                                                        id_animal INTEGER, 
+                                                        id_vet INTEGER, 
+                                                        id_tratamento INTEGER, 
+                                                        terminado INTEGER); 
+                                                        """);
             executeUpdate(stmt);            
              // Table exam:
-            stmt = DAO.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS exame( \n"
-                    + "id INTEGER PRIMARY KEY, \n"
-                    + "nome VARCHAR, \n"
-                    + "id_consulta INTEGER); \n");
+            stmt = DAO.getConnection().prepareStatement("""
+                                                        CREATE TABLE IF NOT EXISTS exame( 
+                                                        id INTEGER PRIMARY KEY, 
+                                                        nome VARCHAR, 
+                                                        id_consulta INTEGER); 
+                                                        """);
             executeUpdate(stmt);      
             // Default element for species:
             stmt = DAO.getConnection().prepareStatement("INSERT OR IGNORE INTO especie (id, nome) VALUES (1, 'Cachorro')");
@@ -139,5 +165,4 @@ public abstract class DAO {
         }
         return false;
     }
-
 }

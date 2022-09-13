@@ -1,12 +1,1 @@
-View\Clinica.class
-Model\ClienteDAO.class
-Model\Tratamento.class
-Model\Veterinario.class
-Model\Exame.class
-Model\Consulta.class
-Model\Cliente.class
-Model\Animal.class
-Model\AnimalDAO.class
-Model\Especie.class
-Controller\ControllerCliente.class
-com\mycompany\clinica2\Clinica2.class
+com\mycompany\clinicamaven\ClinicaMaven.class
