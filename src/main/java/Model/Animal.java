@@ -12,14 +12,14 @@ public class Animal {
     
      private int id;
     private String nome;
-    private char sexo;
+    private String sexo;
     private int idade;
     private int idEspecie;
     private int idCliente;
 
 
   
-public Animal(int id, String nome, char sexo, int idade, int idEspecie, int idCliente) {
+public Animal(int id, String nome, String sexo, int idade, int idEspecie, int idCliente) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
@@ -46,11 +46,11 @@ public Animal(int id, String nome, char sexo, int idade, int idEspecie, int idCl
         this.nome = nome;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 

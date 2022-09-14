@@ -31,7 +31,7 @@ public class AnimalDAO extends DAO {
     }
 
 // CRUD    
-    public Animal create(String nome, char sexo, int idade, int idEspecie, int idCliente) {
+    public Animal create(String nome, String sexo, int idade, int idEspecie, int idCliente) {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO animal (nome, sexo, idade, idEspecie, idCliente) VALUES (?,?,?,?,?)");
@@ -92,7 +92,7 @@ public class AnimalDAO extends DAO {
 
     // RetrieveById
     public Animal retrieveById(int id) {
-        List<Cliente> animais = this.retrieve("SELECT * FROM animal WHERE id = " + id);
+        List<Animal> animais = this.retrieve("SELECT * FROM animal WHERE id = " + id);
         return (animais.isEmpty()?null:animais.get(0));
     }
 
@@ -108,9 +108,9 @@ public class AnimalDAO extends DAO {
             stmt = DAO.getConnection().prepareStatement("UPDATE animal SET nome=?, sexo=?, idade=?, idEspecie=?, idCliente=? WHERE id=?");
             stmt.setString(1, animal.getNome());
             stmt.setString(2, animal.getSexo());
-            stmt.setString(3, animal.getIdade());
-            stmt.setString(4, animal.getIdEspecie());
-            stmt.setString(5, animal.getIdCliente());
+            stmt.setInt(3, animal.getIdade());
+            stmt.setInt(4, animal.getIdEspecie());
+            stmt.setInt(5, animal.getIdCliente());
             stmt.setInt(6, animal.getId());
             executeUpdate(stmt);
         } catch (SQLException e) {
