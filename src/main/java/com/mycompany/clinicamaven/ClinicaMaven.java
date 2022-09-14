@@ -5,6 +5,8 @@
 
 package com.mycompany.clinicamaven;
 
+import Model.Animal;
+import Model.AnimalDAO;
 import Model.Cliente;
 import Model.ClienteDAO;
 import java.util.List;
@@ -20,7 +22,7 @@ public class ClinicaMaven {
     
         
         
-         ClienteDAO.getInstance().create("Bruno", "rua dos bobos", "1300808", "b167460@dac.unicamp.br", "1999999999");
+       //  ClienteDAO.getInstance().create("Bruno", "rua dos bobos", "1300808", "b167460@dac.unicamp.br", "1999999999");
         
          
         //  ClienteDAO.getInstance().create("auauau", "hueheue", "1300808", "b167460@dac.unicamp.br", "1999999999");
@@ -29,9 +31,15 @@ public class ClinicaMaven {
           
        // ClienteDAO.getInstance().delete(cli);
           
-        List<Cliente>  c2 = ClienteDAO.getInstance().retrieveAll();
-         System.out.println(c2.toString());
+     //   List<Cliente>  c2 = ClienteDAO.getInstance().retrieveAll();
+      //   System.out.println(c2.toString());
      
+      
+      AnimalDAO.getInstance().create("tchutchuca", "m", 20, 18, 1);
+    //  Animal ani=AnimalDAO.getInstance().retrieveById(1);
+      List<Animal>  ani2 = AnimalDAO.getInstance().retrieveAll();
+      
+      System.out.println(ani2.toString());
         
     }
 }

@@ -102,8 +102,8 @@ public class DAO {
                                                         CREATE TABLE IF NOT EXISTS animal( 
                                                         id INTEGER PRIMARY KEY, 
                                                         nome VARCHAR, 
-                                                        anoNasc INTEGER, 
                                                         sexo VARCHAR, 
+                                                        idade int, 
                                                         id_especie INTEGER, 
                                                         id_cliente INTEGER); 
                                                         """);

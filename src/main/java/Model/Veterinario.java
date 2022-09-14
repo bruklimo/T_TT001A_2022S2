@@ -18,6 +18,18 @@ public class Veterinario {
         return id;
     }
 
+    public Veterinario(int id, String nome, String email, String telefone) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+    }
+
+    @Override
+    public String toString() {
+        return "Veterinario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + '}';
+    }
+
     public void setId(int id) {
         this.id = id;
     }

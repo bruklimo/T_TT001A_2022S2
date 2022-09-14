@@ -5,6 +5,7 @@
 package Model;
 
 import static Model.DAO.getConnection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,7 +34,7 @@ private static TratamentoDAO instance;
     }
 
 // CRUD    
-    public Tratamento Tratamento(String nome, Calendar data_ini, Calendar data_final, int idAnimal, boolean terminou) {
+    public Tratamento Tratamento(String nome, Date data_ini, Date data_final, int idAnimal, boolean terminou) {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO tratamento (nome, data_ini, data_final, idAnimal, terminou) VALUES (?,?,?,?,?)");
@@ -61,7 +62,7 @@ private static TratamentoDAO instance;
     private Tratamento buildObject(ResultSet rs) {
         Tratamento tratamento = null;
         try {
-            tratamento = new Tratamento(rs.getInt("id"), rs.getString("nome"), rs.getString("dataIni"), rs.getString("dataFinal"), rs.getInt("idAnimal"), rs.getBoolean("terminou"));
+            tratamento = new Tratamento(rs.getInt("id"), rs.getString("nome"), rs.getDate("dataIni"), rs.getDate("dataFinal"), rs.getInt("idAnimal"), rs.getBoolean("terminou"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -107,12 +108,12 @@ private static TratamentoDAO instance;
     public void update(Tratamento tratamento) {
         try {
             PreparedStatement stmt;
-            stmt = DAO.getConnection().prepareStatement("UPDATE tratamento SET nome=?, end=?, cep=?, email=?, telefone=? WHERE id=?");
+            stmt = DAO.getConnection().prepareStatement("UPDATE tratamento SET nome=?, data_ini=?, data_final=?, idAnimal=?, terminou=? WHERE id=?");
             stmt.setString(1, tratamento.getNome());
-            stmt.setString(2, tratamento.getEndereco());
-            stmt.setString(3, tratamento.getCep());
-            stmt.setString(4, tratamento.getEmail());
-            stmt.setString(5, tratamento.getTelefone());
+            stmt.setDate(2, tratamento.getData_ini());
+            stmt.setDate(3, tratamento.getData_final());
+            stmt.setInt(4, tratamento.getIdAnimal());
+            stmt.setBoolean(5, tratamento.isTerminou());
             stmt.setInt(6, tratamento.getId());
             executeUpdate(stmt);
         } catch (SQLException e) {

@@ -4,6 +4,7 @@
  */
 package Model;
 
+import java.sql.Date;
 import java.util.Calendar;
 
 /**
@@ -13,8 +14,8 @@ import java.util.Calendar;
 public class Tratamento {
      private int id;
     private String nome;
-    private Calendar data_ini;
-    private Calendar data_final;
+    private Date data_ini;
+    private Date data_final;
     private int idAnimal;
     private boolean terminou;
 
@@ -42,19 +43,19 @@ public class Tratamento {
         this.nome = nome;
     }
 
-    public Calendar getData_ini() {
+    public Date getData_ini() {
         return data_ini;
     }
 
-    public void setData_ini(Calendar data_ini) {
+    public void setData_ini(Date data_ini) {
         this.data_ini = data_ini;
     }
 
-    public Calendar getData_final() {
+    public Date getData_final() {
         return data_final;
     }
 
-    public void setData_final(Calendar data_final) {
+    public void setData_final(Date data_final) {
         this.data_final = data_final;
     }
 
@@ -66,7 +67,7 @@ public class Tratamento {
         this.terminou = terminou;
     }
 
-    public Tratamento(int id, String nome, Calendar data_ini, Calendar data_final, int idAnimal, boolean terminou) {
+    public Tratamento(int id, String nome, Date data_ini, Date data_final, int idAnimal, boolean terminou) {
         this.id = id;
         this.nome = nome;
         this.data_ini = data_ini;
