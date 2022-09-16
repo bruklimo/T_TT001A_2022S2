@@ -32,11 +32,11 @@ public class ConsultaDAO extends DAO {
     }
 
 // CRUD    
-    public Consulta Consulta( Date data,String historico, int idVet, int idTratamento,int idAnimal, boolean terminou, int hora) {
+    public Consulta create( String data,String historico, int idVet, int idTratamento,int idAnimal, boolean terminou, int hora) {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO consulta (data, historico, idVet,idTratamento, idAnimal, terminou, hora) VALUES (?,?,?,?,?,?,?)");
-            stmt.setDate(1, data);
+            stmt.setString(1, data);
             stmt.setString(2, historico);
             stmt.setInt(3, idVet);
             stmt.setInt(4, idTratamento);
@@ -62,7 +62,7 @@ public class ConsultaDAO extends DAO {
     private Consulta buildObject(ResultSet rs) {
         Consulta consulta = null;
         try {
-            consulta = new Consulta(rs.getInt("id"), rs.getDate("data"), rs.getString("historico"), rs.getInt("idVet"), rs.getInt("idTratamento"), rs.getInt("idAnimal"),rs.getBoolean("terminou"),rs.getInt("hora"));
+            consulta = new Consulta(rs.getInt("id"), rs.getString("data"), rs.getString("historico"), rs.getInt("idVet"), rs.getInt("idTratamento"), rs.getInt("idAnimal"),rs.getBoolean("terminou"),rs.getInt("hora"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -109,7 +109,7 @@ public class ConsultaDAO extends DAO {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("UPDATE consulta SET data=?, historico=?, idVet=?, idTratamento=?, idAnimal=?, terminou=?, hora=? WHERE id=?");
-            stmt.setDate(1, consulta.getData());
+            stmt.setString(1, consulta.getData());
             stmt.setString(2, consulta.getHistorico());
             stmt.setInt(3, consulta.getIdVet());
             stmt.setInt(4, consulta.getIdTratamento());

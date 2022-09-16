@@ -17,6 +17,11 @@ public class Especie {
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return "Especie{" + "id=" + id + ", nome=" + nome + '}';
+    }
+
     public int getId() {
         return id;
     }

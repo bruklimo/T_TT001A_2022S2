@@ -14,9 +14,14 @@ import java.util.Calendar;
 public class Tratamento {
      private int id;
     private String nome;
-    private Date data_ini;
-    private Date data_final;
+    private String data_ini;
+    private String data_final;
     private int idAnimal;
+
+    @Override
+    public String toString() {
+        return "Tratamento{" + "id=" + id + ", nome=" + nome + ", data_ini=" + data_ini + ", data_final=" + data_final + ", idAnimal=" + idAnimal + ", terminou=" + terminou + '}';
+    }
     private boolean terminou;
 
     public int getIdAnimal() {
@@ -43,19 +48,19 @@ public class Tratamento {
         this.nome = nome;
     }
 
-    public Date getData_ini() {
+    public String getData_ini() {
         return data_ini;
     }
 
-    public void setData_ini(Date data_ini) {
+    public void setData_ini(String data_ini) {
         this.data_ini = data_ini;
     }
 
-    public Date getData_final() {
+    public String getData_final() {
         return data_final;
     }
 
-    public void setData_final(Date data_final) {
+    public void setData_final(String data_final) {
         this.data_final = data_final;
     }
 
@@ -67,7 +72,7 @@ public class Tratamento {
         this.terminou = terminou;
     }
 
-    public Tratamento(int id, String nome, Date data_ini, Date data_final, int idAnimal, boolean terminou) {
+    public Tratamento(int id, String nome, String data_ini, String data_final, int idAnimal, boolean terminou) {
         this.id = id;
         this.nome = nome;
         this.data_ini = data_ini;

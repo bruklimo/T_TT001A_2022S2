@@ -34,13 +34,13 @@ private static TratamentoDAO instance;
     }
 
 // CRUD    
-    public Tratamento Tratamento(String nome, Date data_ini, Date data_final, int idAnimal, boolean terminou) {
+    public Tratamento create(String nome, String data_ini, String data_final, int idAnimal, boolean terminou) {
         try {
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("INSERT INTO tratamento (nome, data_ini, data_final, idAnimal, terminou) VALUES (?,?,?,?,?)");
             stmt.setString(1, nome);
-            stmt.setDate(2, data_ini);
-            stmt.setDate(3, data_final);
+            stmt.setString(2, data_ini);
+            stmt.setString(3, data_final);
             stmt.setInt(4, idAnimal);
             stmt.setBoolean(5, terminou);
             executeUpdate(stmt);
@@ -62,7 +62,7 @@ private static TratamentoDAO instance;
     private Tratamento buildObject(ResultSet rs) {
         Tratamento tratamento = null;
         try {
-            tratamento = new Tratamento(rs.getInt("id"), rs.getString("nome"), rs.getDate("dataIni"), rs.getDate("dataFinal"), rs.getInt("idAnimal"), rs.getBoolean("terminou"));
+            tratamento = new Tratamento(rs.getInt("id"), rs.getString("nome"), rs.getString("data_ini"), rs.getString("data_final"), rs.getInt("idAnimal"), rs.getBoolean("terminou"));
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());
         }
@@ -110,8 +110,8 @@ private static TratamentoDAO instance;
             PreparedStatement stmt;
             stmt = DAO.getConnection().prepareStatement("UPDATE tratamento SET nome=?, data_ini=?, data_final=?, idAnimal=?, terminou=? WHERE id=?");
             stmt.setString(1, tratamento.getNome());
-            stmt.setDate(2, tratamento.getData_ini());
-            stmt.setDate(3, tratamento.getData_final());
+            stmt.setString(2, tratamento.getData_ini());
+            stmt.setString(3, tratamento.getData_final());
             stmt.setInt(4, tratamento.getIdAnimal());
             stmt.setBoolean(5, tratamento.isTerminou());
             stmt.setInt(6, tratamento.getId());

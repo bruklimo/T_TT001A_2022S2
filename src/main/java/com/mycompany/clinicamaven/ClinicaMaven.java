@@ -9,6 +9,17 @@ import Model.Animal;
 import Model.AnimalDAO;
 import Model.Cliente;
 import Model.ClienteDAO;
+import Model.Consulta;
+import Model.ConsultaDAO;
+import Model.Especie;
+import Model.EspecieDAO;
+import Model.Exame;
+import Model.ExameDAO;
+import Model.Tratamento;
+import Model.TratamentoDAO;
+import Model.Veterinario;
+import Model.VeterinarioDAO;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -35,11 +46,37 @@ public class ClinicaMaven {
       //   System.out.println(c2.toString());
      
       
-      AnimalDAO.getInstance().create("tchutchuca", "m", 20, 18, 1);
+  //    AnimalDAO.getInstance().create("tchutchuca", "m", 20, 18, 1);
     //  Animal ani=AnimalDAO.getInstance().retrieveById(1);
-      List<Animal>  ani2 = AnimalDAO.getInstance().retrieveAll();
+    //  List<Animal>  ani2 = AnimalDAO.getInstance().retrieveAll();
       
-      System.out.println(ani2.toString());
+    //  System.out.println(ani2.toString());
         
+    
+  //  ExameDAO.getInstance().create("hernia", 1);
+   // List<Exame>  ex = ExameDAO.getInstance().retrieveAll();
+   // System.out.println(ex.toString());
+    
+   
+   //EspecieDAO.getInstance().create("canino");
+   //List<Especie>  es = EspecieDAO.getInstance().retrieveAll();
+   //System.out.println(es.toString());
+   
+  //  VeterinarioDAO.getInstance().create("haha","asdasd@uhasduhas","52151156");
+  //  List<Veterinario>  vet = VeterinarioDAO.getInstance().retrieveAll();
+  //  System.out.println(vet.toString());
+  
+
+   
+  // TratamentoDAO.getInstance().create("haha","22-09-2000","22-09-2000",1,true);
+  // List<Tratamento>  trat = TratamentoDAO.getInstance().retrieveAll();
+  // System.out.println(trat.toString());
+   
+  // ConsultaDAO.getInstance().create("22-09-2000","hahah",1,1,1,true,1);
+  // List<Consulta>  consul = ConsultaDAO.getInstance().retrieveAll();
+  // System.out.println(consul.toString());
+  
+   
+   
     }
 }

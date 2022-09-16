@@ -13,6 +13,11 @@ public class Exame {
     private String descricao;
     private int idConsulta;
 
+    @Override
+    public String toString() {
+        return "Exame{" + "id=" + id + ", descricao=" + descricao + ", idConsulta=" + idConsulta + '}';
+    }
+
    
 
     public int getId() {
