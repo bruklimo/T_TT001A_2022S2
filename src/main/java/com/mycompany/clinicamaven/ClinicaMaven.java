@@ -40,10 +40,10 @@ public class ClinicaMaven {
         
        //  Cliente  cli = ClienteDAO.getInstance().retrieveById(9); 
           
-       // ClienteDAO.getInstance().delete(cli);
+    //    ClienteDAO.getInstance().delete(cli);
           
-     //   List<Cliente>  c2 = ClienteDAO.getInstance().retrieveAll();
-      //   System.out.println(c2.toString());
+       // List<Cliente>  c2 = ClienteDAO.getInstance().retrieveAll();
+       //  System.out.println(c2.toString());
      
       
   //    AnimalDAO.getInstance().create("tchutchuca", "m", 20, 18, 1);
