@@ -94,6 +94,8 @@ public class ClienteDAO extends DAO {
         List<Cliente> clientes = this.retrieve("SELECT * FROM cliente WHERE id = " + id);
         return (clientes.isEmpty()?null:clientes.get(0));
     }
+    
+    
 
     // RetrieveBySimilarName
     public List retrieveBySimilarName(String nome) {
