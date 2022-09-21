@@ -139,7 +139,7 @@ public class TelaTeste extends javax.swing.JFrame {
           
            for(Animal a : animais){
       //  jList1.add(clientes);
-        jTextArea2.setText(a.getNome() + "\n");
+        jTextArea2.append(a.getNome() + "\n");
         }
         }
         else

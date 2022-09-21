@@ -96,8 +96,16 @@ public class AnimalDAO extends DAO {
         return (animais.isEmpty()?null:animais.get(0));
     }
     
-       public List retrieveByIdCliente(int id) {
-        List<Animal> animais = this.retrieve("SELECT * FROM animal WHERE idCliente = " + id);
+    // RetrieveByIdCliente
+       public List retrieveByIdCliente(int idCliente) {
+        List<Animal> animais = this.retrieve("SELECT * FROM animal WHERE idCliente = " + idCliente);
+      //  return (animais.isEmpty()?null:animais.get(0));
+      return animais;
+    }
+       
+       // RetrieveByIdEspecie
+       public List retrieveByIdEspecie(int idEspecie) {
+        List<Animal> animais = this.retrieve("SELECT * FROM animal WHERE idEspecie = " + idEspecie);
       //  return (animais.isEmpty()?null:animais.get(0));
       return animais;
     }

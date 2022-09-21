@@ -98,6 +98,12 @@ private static TratamentoDAO instance;
         List<Tratamento> tratamentos = this.retrieve("SELECT * FROM tratamento WHERE id = " + id);
         return (tratamentos.isEmpty()?null:tratamentos.get(0));
     }
+    
+    // RetrieveByIdAnimal
+      public Tratamento retrieveByIdAnimal(int idAnimal) {
+        List<Tratamento> tratamentos = this.retrieve("SELECT * FROM tratamento WHERE idAnimal = " + idAnimal);
+        return (tratamentos.isEmpty()?null:tratamentos.get(0));
+    }
 
     // RetrieveBySimilarName
     public List retrieveBySimilarName(String nome) {

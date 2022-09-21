@@ -46,7 +46,7 @@ public class ClinicaMaven {
        //  System.out.println(c2.toString());
      
       
-  //  AnimalDAO.getInstance().create("tchutchuca", "m", 20, 18, 1);
+   // AnimalDAO.getInstance().create("hueheue", "m", 20, 18, 2);
     //  Animal ani=AnimalDAO.getInstance().retrieveById(1);
     //  List<Animal>  ani2 = AnimalDAO.getInstance().retrieveAll();
       

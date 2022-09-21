@@ -94,6 +94,12 @@ public class ExameDAO extends DAO {
         return (exames.isEmpty()?null:exames.get(0));
     }
 
+    // RetrieveByIdConsulta
+     public Exame retrieveByIdConsulta(int idConsulta) {
+        List<Exame> exames = this.retrieve("SELECT * FROM exame WHERE idConsulta = " + idConsulta);
+        return (exames.isEmpty()?null:exames.get(0));
+    }
+     
     // RetrieveBySimilarName
     public List retrieveBySimilarName(String descricao) {
         return this.retrieve("SELECT * FROM exame WHERE descricao LIKE '%" + descricao + "%'");
