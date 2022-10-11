@@ -8,6 +8,16 @@ import Model.Animal;
 import Model.AnimalDAO;
 import Model.Cliente;
 import Model.ClienteDAO;
+import Model.Consulta;
+import Model.ConsultaDAO;
+import Model.Especie;
+import Model.EspecieDAO;
+import Model.Exame;
+import Model.ExameDAO;
+import Model.Tratamento;
+import Model.TratamentoDAO;
+import Model.Veterinario;
+import Model.VeterinarioDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -35,7 +45,15 @@ public class TelaTeste extends javax.swing.JFrame {
         initComponents();
         initFields();
         populateTable();
+        getVet();
+        getEsp();
+        getExa();
+        getConsulta();
+        getTratamento();
     }
+    
+  
+    
     
     public void populateTable(){
        
@@ -85,7 +103,6 @@ public class TelaTeste extends javax.swing.JFrame {
         model7.addColumn("nome");
         model7.addColumn("data inicial");
         model7.addColumn("data final");
-        model7.addColumn("idTratamento");
         model7.addColumn("idAnimal");
         model7.addColumn("terminou");
         jTable7.setModel(model7);
@@ -120,6 +137,61 @@ public class TelaTeste extends javax.swing.JFrame {
         jTextField22.setText("");
     }
 
+    
+      private void getVet(){
+          List<Veterinario> veterinarios = VeterinarioDAO.getInstance().retrieveAll();
+     
+       for(Veterinario v : veterinarios){
+           
+           model3.addRow(new Object[]{v.getId(), v.getNome(),v.getEmail(),v.getTelefone()});
+       }
+
+      }
+    
+       
+       private void getEsp(){
+          List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
+     
+       for(Especie e : especies){
+           
+           model4.addRow(new Object[]{e.getId(), e.getNome()});
+       }
+
+     
+    }
+       
+       private void getExa(){
+          List<Exame> exames = ExameDAO.getInstance().retrieveAll();
+     
+       for(Exame e : exames){
+           
+           model5.addRow(new Object[]{e.getId(), e.getDescricao(), e.getIdConsulta()});
+       }
+
+     
+    }
+       
+        private void getConsulta(){
+          List<Consulta> consultas = ConsultaDAO.getInstance().retrieveAll();
+     
+       for(Consulta c : consultas){
+           
+           model6.addRow(new Object[]{c.getId(), c.getData(), c.getHistorico(), c.getIdVet(),c.getIdTratamento(),c.getIdAnimal(), c.isTerminou(),c.getHora()});
+       }
+
+     
+    }
+        
+        private void getTratamento(){
+          List<Tratamento> tratamentos = TratamentoDAO.getInstance().retrieveAll();
+     
+       for(Tratamento t : tratamentos){
+           
+           model7.addRow(new Object[]{t.getId(), t.getNome(), t.getData_ini(), t.getData_final(),t.getIdAnimal(), t.isTerminou()});
+       }
+
+     
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -829,14 +901,16 @@ public class TelaTeste extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       
-      
+    //  int rows= model.getRowCount();
+    //  model.fireTableRowsDeleted(1, rows);
        List<Cliente> clientes = ClienteDAO.getInstance().retrieveAll();
-     
+    
        for(Cliente c : clientes){
+           
            model.addRow(new Object[]{c.getId(), c.getNome(), c.getEndereco(),c.getCep(),c.getEmail(),c.getTelefone()});
        }
 
- 
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -847,11 +921,11 @@ public class TelaTeste extends javax.swing.JFrame {
   
           int idCliente = Integer.parseInt(jTextField1.getText());
           List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(idCliente);
-
+  
        for(Animal a : animais){
        model2.addRow(new Object[]{a.getId(), a.getNome(), a.getSexo(),a.getIdade(),a.getIdEspecie(),a.getIdCliente()});
        }
-
+   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

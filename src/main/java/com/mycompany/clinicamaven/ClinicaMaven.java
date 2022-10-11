@@ -33,7 +33,7 @@ public class ClinicaMaven {
     
         
         
-      //  ClienteDAO.getInstance().create("Pli", "rua dos bobos", "1300808", "fafa@dac.unicamp.br", "1999999999");
+     //   ClienteDAO.getInstance().create("huehue", "aaaaaaaaaaaaaaaaaaa", "1300808", "fafa@dac.unicamp.br", "1999999999");
         
          
         //  ClienteDAO.getInstance().create("auauau", "hueheue", "1300808", "b167460@dac.unicamp.br", "1999999999");
@@ -53,7 +53,7 @@ public class ClinicaMaven {
     //  System.out.println(ani2.toString());
         
     
-  //  ExameDAO.getInstance().create("hernia", 1);
+   //ExameDAO.getInstance().create("hernia", 1);
    // List<Exame>  ex = ExameDAO.getInstance().retrieveAll();
    // System.out.println(ex.toString());
     
@@ -62,9 +62,9 @@ public class ClinicaMaven {
    //List<Especie>  es = EspecieDAO.getInstance().retrieveAll();
    //System.out.println(es.toString());
    
-  //  VeterinarioDAO.getInstance().create("haha","asdasd@uhasduhas","52151156");
-  //  List<Veterinario>  vet = VeterinarioDAO.getInstance().retrieveAll();
-  //  System.out.println(vet.toString());
+    //VeterinarioDAO.getInstance().create("haha","asdasd@uhasduhas","52151156");
+    //List<Veterinario>  vet = VeterinarioDAO.getInstance().retrieveAll();
+    //System.out.println(vet.toString());
   
 
    
@@ -72,7 +72,7 @@ public class ClinicaMaven {
   // List<Tratamento>  trat = TratamentoDAO.getInstance().retrieveAll();
   // System.out.println(trat.toString());
    
-  // ConsultaDAO.getInstance().create("22-09-2000","hahah",1,1,1,true,1);
+ //  ConsultaDAO.getInstance().create("22-09-2000","hahah",1,1,1,true,1);
   // List<Consulta>  consul = ConsultaDAO.getInstance().retrieveAll();
   // System.out.println(consul.toString());
   
