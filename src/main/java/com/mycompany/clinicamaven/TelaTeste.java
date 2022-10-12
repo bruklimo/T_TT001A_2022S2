@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -206,6 +207,12 @@ public class TelaTeste extends javax.swing.JFrame {
 
             
         }
+        
+        
+        
+        
+        
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -451,6 +458,11 @@ public class TelaTeste extends javax.swing.JFrame {
         jButton4.setText("Cadastrar");
 
         jButton3.setText("Cadastrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -904,10 +916,16 @@ public class TelaTeste extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
           
-     //  String ani=  jTable3.getModel().getValueAt(0, 0).toString();
-      String ani= jTable3.getModel().getValueAt(WIDTH, ICONIFIED).toString();
-        System.out.println(ani);
-          int idCliente = Integer.parseInt(jTextField1.getText());
+     
+       DefaultTableModel dm = (DefaultTableModel)jTable4.getModel();
+       dm.getDataVector().removeAllElements();
+       dm.fireTableDataChanged(); 
+       
+      int row= jTable3.getSelectedRow();
+      
+      int column = jTable3.getSelectedColumn();
+
+        int idCliente = (int) jTable3.getValueAt(row, column);
           List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(idCliente);
   
        for(Animal a : animais){
@@ -919,6 +937,20 @@ public class TelaTeste extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ClienteDAO.getInstance().create(jTextField2.getText(), jTextField4.getText(), jTextField3.getText(), jTextField5.getText(), jTextField6.getText());
+        
+        
+        jTextField2.setText("");
+        jTextField4.setText("");
+        jTextField3.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        
+        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
