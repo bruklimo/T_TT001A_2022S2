@@ -18,6 +18,7 @@ import Model.Tratamento;
 import Model.TratamentoDAO;
 import Model.Veterinario;
 import Model.VeterinarioDAO;
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -935,6 +936,16 @@ public class TelaTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        AnimalDAO.getInstance().create(jTextField7.getText(), jTextField8.getText(), parseInt(jTextField9.getText()), 1,1);
+        
+        
+        jTextField7.setText("");
+        jTextField8.setText("");
+        jTextField9.setText("");
+        
+        JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -948,7 +959,7 @@ public class TelaTeste extends javax.swing.JFrame {
         jTextField5.setText("");
         jTextField6.setText("");
         
-        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+        JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
