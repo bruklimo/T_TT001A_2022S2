@@ -612,6 +612,11 @@ public class TelaTeste extends javax.swing.JFrame {
         jTextField12.setText("jTextField10");
 
         jButton6.setText("Cadastrar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -962,6 +967,17 @@ public class TelaTeste extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        VeterinarioDAO.getInstance().create(jTextField10.getText(), jTextField11.getText(), jTextField12.getText());
+        
+        
+        jTextField10.setText("");
+        jTextField11.setText("");
+        jTextField12.setText("");
+        
+        JOptionPane.showMessageDialog(null, "Veterinario cadastrado com sucesso!");
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
