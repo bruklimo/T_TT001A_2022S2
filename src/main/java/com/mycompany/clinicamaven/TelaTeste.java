@@ -1109,7 +1109,7 @@ public class TelaTeste extends javax.swing.JFrame {
       
       
 
-        int idCliente = (int) jTable3.getValueAt(row, column);
+        int idCliente = (int) jTable3.getValueAt(row, 0);
           List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(idCliente);
   
        for(Animal a : animais){
