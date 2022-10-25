@@ -234,7 +234,6 @@ public class TelaTeste extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -334,10 +333,9 @@ public class TelaTeste extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Listar Animais");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
             }
         });
 
@@ -352,6 +350,18 @@ public class TelaTeste extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable3MousePressed(evt);
+            }
+        });
+        jTable3.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTable3InputMethodTextChanged(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         jTabbedPane1.addTab("Clientes", jScrollPane3);
@@ -933,14 +943,11 @@ public class TelaTeste extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton11)
-                                    .addComponent(jButton1))
-                                .addContainerGap())))
+                            .addComponent(jButton11)
+                            .addComponent(jButton1))
+                        .addContainerGap())
                     .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
@@ -956,11 +963,9 @@ public class TelaTeste extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton11)
@@ -971,30 +976,16 @@ public class TelaTeste extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-          
-     
-       DefaultTableModel dm = (DefaultTableModel)jTable4.getModel();
+        DefaultTableModel dm = (DefaultTableModel)jTable3.getModel();
        dm.getDataVector().removeAllElements();
-       dm.fireTableDataChanged(); 
-       
-      int row= jTable3.getSelectedRow();
-      
-      int column = jTable3.getSelectedColumn();
-      
-      
-
-        int idCliente = (int) jTable3.getValueAt(row, column);
-          List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(idCliente);
-  
-       for(Animal a : animais){
-       model2.addRow(new Object[]{a.getId(), a.getNome(), a.getSexo(),a.getIdade(),a.getIdEspecie(),a.getIdCliente()});
-       }
-   
-    }//GEN-LAST:event_jButton2ActionPerformed
+       dm.fireTableDataChanged();
+        List<Cliente> clientes = ClienteDAO.getInstance().retrieveBySimilarName(jTextField1.getText());
+    
+       for(Cliente c : clientes){
+           
+           model.addRow(new Object[]{c.getId(), c.getNome(), c.getEndereco(),c.getCep(),c.getEmail(),c.getTelefone()});
+       }// TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         AnimalDAO.getInstance().create(jTextField7.getText(), jTextField8.getText(), parseInt(jTextField9.getText()), 1,1);
@@ -1107,6 +1098,60 @@ public class TelaTeste extends javax.swing.JFrame {
         ClienteDAO.getInstance().delete(cliente);
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+  DefaultTableModel dm = (DefaultTableModel)jTable4.getModel();
+       dm.getDataVector().removeAllElements();
+       dm.fireTableDataChanged(); 
+       
+      int row= jTable3.getSelectedRow();
+      
+      int column = jTable3.getSelectedColumn();
+      
+      
+
+        int idCliente = (int) jTable3.getValueAt(row, column);
+          List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(idCliente);
+  
+       for(Animal a : animais){
+       model2.addRow(new Object[]{a.getId(), a.getNome(), a.getSexo(),a.getIdade(),a.getIdEspecie(),a.getIdCliente()});
+       }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void jTable3InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable3InputMethodTextChanged
+           int row= jTable3.getSelectedRow();
+      
+      int column = jTable3.getSelectedColumn();
+      
+      
+
+        int idCliente = (int) jTable3.getValueAt(row, column);
+            
+        
+      //  System.out.println((String) jTable3.getValueAt(row,1));
+      //  System.out.println(row +" " +column);
+     //   System.out.println(jTable3.getValueAt(row,2).toString());
+        Cliente cliente = new Cliente(idCliente,(String)jTable3.getValueAt(row,1),(String)jTable3.getValueAt(row,2),(String)jTable3.getValueAt(row,3),(String)jTable3.getValueAt(row,4),(String)jTable3.getValueAt(row,5));
+        ClienteDAO.getInstance().update(cliente);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable3InputMethodTextChanged
+
+    private void jTable3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MousePressed
+           int row= jTable3.getSelectedRow();
+      
+      int column = jTable3.getSelectedColumn();
+      
+      
+        int idCliente = (int) jTable3.getValueAt(row, 0);
+            
+        
+      //  System.out.println((String) jTable3.getValueAt(row,1));
+      //  System.out.println(row +" " +column);
+     //   System.out.println(jTable3.getValueAt(row,2).toString());
+        Cliente cliente = new Cliente(idCliente,(String)jTable3.getValueAt(row,1),(String)jTable3.getValueAt(row,2),(String)jTable3.getValueAt(row,3),(String)jTable3.getValueAt(row,4),(String)jTable3.getValueAt(row,5));
+        ClienteDAO.getInstance().update(cliente);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable3MousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -1147,7 +1192,6 @@ public class TelaTeste extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
