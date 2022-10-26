@@ -307,7 +307,6 @@ public class TelaTeste extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -351,6 +350,9 @@ public class TelaTeste extends javax.swing.JFrame {
             }
         ));
         jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTable3MousePressed(evt);
             }
@@ -360,6 +362,11 @@ public class TelaTeste extends javax.swing.JFrame {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTable3InputMethodTextChanged(evt);
+            }
+        });
+        jTable3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable3KeyPressed(evt);
             }
         });
         jScrollPane3.setViewportView(jTable3);
@@ -914,13 +921,6 @@ public class TelaTeste extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Cliente", jPanel2);
 
-        jButton1.setText("Editar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jButton11.setText("Excluir");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -944,9 +944,7 @@ public class TelaTeste extends javax.swing.JFrame {
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton11)
-                            .addComponent(jButton1))
+                        .addComponent(jButton11)
                         .addContainerGap())
                     .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -966,8 +964,6 @@ public class TelaTeste extends javax.swing.JFrame {
                         .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
                         .addComponent(jButton11)
                         .addGap(207, 207, 207))))
         );
@@ -1068,24 +1064,6 @@ public class TelaTeste extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Tratamento cadastrada com sucesso!"); // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         int row= jTable3.getSelectedRow();
-      
-      int column = jTable3.getSelectedColumn();
-      
-      
-
-        int idCliente = (int) jTable3.getValueAt(row, column);
-            
-        
-      //  System.out.println((String) jTable3.getValueAt(row,1));
-      //  System.out.println(row +" " +column);
-     //   System.out.println(jTable3.getValueAt(row,2).toString());
-        Cliente cliente = new Cliente(idCliente,(String)jTable3.getValueAt(row,1),(String)jTable3.getValueAt(row,2),(String)jTable3.getValueAt(row,3),(String)jTable3.getValueAt(row,4),(String)jTable3.getValueAt(row,5));
-        ClienteDAO.getInstance().update(cliente);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         int row= jTable3.getSelectedRow();
       
@@ -1118,7 +1096,7 @@ public class TelaTeste extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void jTable3InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable3InputMethodTextChanged
-           int row= jTable3.getSelectedRow();
+        /*   int row= jTable3.getSelectedRow();
       
       int column = jTable3.getSelectedColumn();
       
@@ -1133,10 +1111,15 @@ public class TelaTeste extends javax.swing.JFrame {
         Cliente cliente = new Cliente(idCliente,(String)jTable3.getValueAt(row,1),(String)jTable3.getValueAt(row,2),(String)jTable3.getValueAt(row,3),(String)jTable3.getValueAt(row,4),(String)jTable3.getValueAt(row,5));
         ClienteDAO.getInstance().update(cliente);
         // TODO add your handling code here:
+        */
     }//GEN-LAST:event_jTable3InputMethodTextChanged
 
     private void jTable3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MousePressed
-           int row= jTable3.getSelectedRow();
+         
+    }//GEN-LAST:event_jTable3MousePressed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+         int row= jTable3.getSelectedRow();
       
       int column = jTable3.getSelectedColumn();
       
@@ -1150,7 +1133,20 @@ public class TelaTeste extends javax.swing.JFrame {
         Cliente cliente = new Cliente(idCliente,(String)jTable3.getValueAt(row,1),(String)jTable3.getValueAt(row,2),(String)jTable3.getValueAt(row,3),(String)jTable3.getValueAt(row,4),(String)jTable3.getValueAt(row,5));
         ClienteDAO.getInstance().update(cliente);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTable3MousePressed
+    }//GEN-LAST:event_jTable3MouseClicked
+
+    private void jTable3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable3KeyPressed
+        if(evt.getKeyCode() == 127)
+{
+    
+    int input = JOptionPane.showConfirmDialog(null, 
+                "Do you want to proceed?", "Select an Option...",JOptionPane.YES_NO_CANCEL_OPTION);
+
+	// 0=yes, 1=no, 2=cancel
+	System.out.println(input);
+   // System.out.println("apertou del");
+}
+    }//GEN-LAST:event_jTable3KeyPressed
 
     /**
      * @param args the command line arguments
@@ -1189,7 +1185,6 @@ public class TelaTeste extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
