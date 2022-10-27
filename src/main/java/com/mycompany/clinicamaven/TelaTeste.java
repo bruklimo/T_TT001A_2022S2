@@ -207,6 +207,10 @@ public class TelaTeste extends javax.swing.JFrame {
     }
         
         private void getCliente(){
+            
+            DefaultTableModel dm = (DefaultTableModel)jTable3.getModel();
+       dm.getDataVector().removeAllElements();
+       dm.fireTableDataChanged();
           List<Cliente> clientes = ClienteDAO.getInstance().retrieveAll();
     
        for(Cliente c : clientes){
@@ -1140,10 +1144,24 @@ public class TelaTeste extends javax.swing.JFrame {
 {
     
     int input = JOptionPane.showConfirmDialog(null, 
-                "Do you want to proceed?", "Select an Option...",JOptionPane.YES_NO_CANCEL_OPTION);
+                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
 
 	// 0=yes, 1=no, 2=cancel
-	System.out.println(input);
+	if (input==0){
+            int row= jTable3.getSelectedRow();
+      
+      int column = jTable3.getSelectedColumn();
+      
+      
+
+        int idCliente = (int) jTable3.getValueAt(row, 0);
+        Cliente cliente = new Cliente(idCliente,(String)jTable3.getValueAt(row,1),(String)jTable3.getValueAt(row,2),(String)jTable3.getValueAt(row,3),(String)jTable3.getValueAt(row,4),(String)jTable3.getValueAt(row,5));
+        ClienteDAO.getInstance().delete(cliente);
+        
+        
+        getCliente();
+            
+        }
    // System.out.println("apertou del");
 }
     }//GEN-LAST:event_jTable3KeyPressed
