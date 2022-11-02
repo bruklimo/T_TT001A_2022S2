@@ -33,7 +33,7 @@ public class ClinicaMaven {
     
         
         
-     //   ClienteDAO.getInstance().create("huehue", "aaaaaaaaaaaaaaaaaaa", "1300808", "fafa@dac.unicamp.br", "1999999999");
+    //    ClienteDAO.getInstance().create("Bruno", "Rua dos Bobos, 0", "1300808", "b167460@dac.unicamp.br", "19994198488");
         
          
         //  ClienteDAO.getInstance().create("auauau", "hueheue", "1300808", "b167460@dac.unicamp.br", "1999999999");
