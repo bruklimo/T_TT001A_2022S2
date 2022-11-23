@@ -17,12 +17,12 @@ public class Tratamento {
     private String data_ini;
     private String data_final;
     private int idAnimal;
+    private boolean terminou;
 
     @Override
     public String toString() {
         return "Tratamento{" + "id=" + id + ", nome=" + nome + ", data_ini=" + data_ini + ", data_final=" + data_final + ", idAnimal=" + idAnimal + ", terminou=" + terminou + '}';
     }
-    private boolean terminou;
 
     public int getIdAnimal() {
         return idAnimal;

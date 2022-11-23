@@ -163,6 +163,10 @@ public class TelaTeste extends javax.swing.JFrame {
     
        
        private void getEsp(){
+           
+            DefaultTableModel dm = (DefaultTableModel)jTable2.getModel();
+       dm.getDataVector().removeAllElements();
+       dm.fireTableDataChanged();
           List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
      
        for(Especie e : especies){
@@ -174,6 +178,12 @@ public class TelaTeste extends javax.swing.JFrame {
     }
        
        private void getExa(){
+           
+           DefaultTableModel dm = (DefaultTableModel)jTable2.getModel();
+       dm.getDataVector().removeAllElements();
+       dm.fireTableDataChanged();
+          List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
+           
           List<Exame> exames = ExameDAO.getInstance().retrieveAll();
      
        for(Exame e : exames){
@@ -418,6 +428,16 @@ public class TelaTeste extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jTable2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable2KeyPressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jTabbedPane1.addTab("Especie", jScrollPane2);
@@ -433,6 +453,16 @@ public class TelaTeste extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable5MouseClicked(evt);
+            }
+        });
+        jTable5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable5KeyPressed(evt);
+            }
+        });
         jScrollPane5.setViewportView(jTable5);
 
         jTabbedPane1.addTab("Exame", jScrollPane5);
@@ -1019,6 +1049,8 @@ public class TelaTeste extends javax.swing.JFrame {
         
         jTextField13.setText("");
         
+        getEsp();
+        
         JOptionPane.showMessageDialog(null, "Especie cadastrada com sucesso!");
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -1028,6 +1060,7 @@ public class TelaTeste extends javax.swing.JFrame {
         
         jTextField14.setText("");
         
+        getExa();
         JOptionPane.showMessageDialog(null, "Exame cadastrado com sucesso!");// TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -1137,10 +1170,103 @@ public class TelaTeste extends javax.swing.JFrame {
         getCliente();
             
         }
-   // System.out.println("apertou del");
 }
     }//GEN-LAST:event_jTable3KeyPressed
 
+    private void jTable2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable2KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == 127)
+{
+    
+    int input = JOptionPane.showConfirmDialog(null, 
+                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
+
+	// 0=yes, 1=no, 2=cancel
+	if (input==0){
+            int row= jTable2.getSelectedRow();
+      
+      int column = jTable2.getSelectedColumn();
+      
+      
+
+        int idEspecie = (int) jTable2.getValueAt(row, 0);
+        Especie especie = new Especie(idEspecie,(String)jTable2.getValueAt(row,1));
+        EspecieDAO.getInstance().delete(especie);
+        
+        
+        getEsp();
+            
+        }
+}
+    }//GEN-LAST:event_jTable2KeyPressed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+ int row= jTable2.getSelectedRow();
+      
+      int column = jTable2.getSelectedColumn();
+      
+      
+        
+            
+        
+      //  System.out.println((String) jTable3.getValueAt(row,1));
+      //  System.out.println(row +" " +column);
+     //   System.out.println(jTable3.getValueAt(row,2).toString());
+         int idEspecie = (int) jTable2.getValueAt(row, 0);
+        Especie especie = new Especie(idEspecie,(String)jTable2.getValueAt(row,1));
+        EspecieDAO.getInstance().update(especie);
+        // TODO add your handling code here:        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jTable5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable5KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == 127)
+{
+    
+    int input = JOptionPane.showConfirmDialog(null, 
+                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
+
+	// 0=yes, 1=no, 2=cancel
+	if (input==0){
+            int row= jTable5.getSelectedRow();
+      
+      int column = jTable5.getSelectedColumn();
+      
+      
+
+        int idExame = (int) jTable5.getValueAt(row, 0);
+        Exame exame = new Exame(idExame,(String)jTable5.getValueAt(row,1),1);
+        ExameDAO.getInstance().delete(exame);
+        
+        
+        getExa();
+            
+        } // TODO add your handling code here:
+    }//GEN-LAST:event_jTable5KeyPressed
+
+        
+    }
+    private void jTable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MouseClicked
+        int row= jTable5.getSelectedRow();
+      
+      int column = jTable5.getSelectedColumn();
+      
+      
+        
+            
+        
+      //  System.out.println((String) jTable3.getValueAt(row,1));
+      //  System.out.println(row +" " +column);
+     //   System.out.println(jTable3.getValueAt(row,2).toString());
+         int idExame = (int) jTable5.getValueAt(row, 0);
+        Exame exame = new Exame(idExame,(String)jTable2.getValueAt(row,1),1);
+        ExameDAO.getInstance().update(exame);// TODO add your handling code here:
+    }//GEN-LAST:event_jTable5MouseClicked
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
