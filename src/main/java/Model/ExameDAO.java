@@ -112,7 +112,7 @@ public class ExameDAO extends DAO {
             stmt = DAO.getConnection().prepareStatement("UPDATE exame SET descricao=?, idConsulta=? WHERE id=?");
             stmt.setString(1, exame.getDescricao());
             stmt.setInt(2, exame.getIdConsulta());
-            stmt.setInt(2, exame.getId());
+            stmt.setInt(3, exame.getId());
             executeUpdate(stmt);
         } catch (SQLException e) {
             System.err.println("Exception: " + e.getMessage());

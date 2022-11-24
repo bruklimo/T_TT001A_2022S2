@@ -14,17 +14,18 @@ import java.util.Calendar;
 public class Consulta {
     private int id;
     private String data;
-
-    @Override
-    public String toString() {
-        return "Consulta{" + "id=" + id + ", data=" + data + ", historico=" + historico + ", idVet=" + idVet + ", idTratamento=" + idTratamento + ", idAnimal=" + idAnimal + ", terminou=" + terminou + ", hora=" + hora + '}';
-    }
     private String historico;
     private int idVet;
     private int idTratamento;
     private int idAnimal;
     private boolean terminou;
     private int hora;
+
+    @Override
+    public String toString() {
+        return "Consulta{" + "id=" + id + ", data=" + data + ", historico=" + historico + ", idVet=" + idVet + ", idTratamento=" + idTratamento + ", idAnimal=" + idAnimal + ", terminou=" + terminou + ", hora=" + hora + '}';
+    }
+   
 
     public int getId() {
         return id;

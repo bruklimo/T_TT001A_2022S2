@@ -152,6 +152,10 @@ public class TelaTeste extends javax.swing.JFrame {
 
     
       private void getVet(){
+          
+          DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
+       dm.getDataVector().removeAllElements();
+       dm.fireTableDataChanged();
           List<Veterinario> veterinarios = VeterinarioDAO.getInstance().retrieveAll();
      
        for(Veterinario v : veterinarios){
@@ -161,6 +165,8 @@ public class TelaTeste extends javax.swing.JFrame {
 
       }
     
+      
+      
        
        private void getEsp(){
            
@@ -179,7 +185,7 @@ public class TelaTeste extends javax.swing.JFrame {
        
        private void getExa(){
            
-           DefaultTableModel dm = (DefaultTableModel)jTable2.getModel();
+           DefaultTableModel dm = (DefaultTableModel)jTable5.getModel();
        dm.getDataVector().removeAllElements();
        dm.fireTableDataChanged();
           List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
@@ -206,6 +212,12 @@ public class TelaTeste extends javax.swing.JFrame {
     }
         
         private void getTratamento(){
+            
+            DefaultTableModel dm = (DefaultTableModel)jTable7.getModel();
+       dm.getDataVector().removeAllElements();
+       dm.fireTableDataChanged();
+          List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
+            
           List<Tratamento> tratamentos = TratamentoDAO.getInstance().retrieveAll();
      
        for(Tratamento t : tratamentos){
@@ -398,6 +410,11 @@ public class TelaTeste extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTable4MouseEntered(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTable4);
 
         jTabbedPane1.addTab("Animais", jScrollPane4);
@@ -413,6 +430,16 @@ public class TelaTeste extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jTabbedPane1.addTab("Veterinario", jScrollPane1);
@@ -493,6 +520,16 @@ public class TelaTeste extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable7MouseClicked(evt);
+            }
+        });
+        jTable7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable7KeyPressed(evt);
+            }
+        });
         jScrollPane7.setViewportView(jTable7);
 
         jTabbedPane1.addTab("Tratamento", jScrollPane7);
@@ -1040,6 +1077,7 @@ public class TelaTeste extends javax.swing.JFrame {
         jTextField11.setText("");
         jTextField12.setText("");
         
+        getVet();
         JOptionPane.showMessageDialog(null, "Veterinario cadastrado com sucesso!");
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -1049,9 +1087,11 @@ public class TelaTeste extends javax.swing.JFrame {
         
         jTextField13.setText("");
         
-        getEsp();
+        
         
         JOptionPane.showMessageDialog(null, "Especie cadastrada com sucesso!");
+        
+        getEsp();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1073,6 +1113,7 @@ public class TelaTeste extends javax.swing.JFrame {
         jTextField17.setText("");
         jTextField18.setText("");
         
+        getConsulta();
         JOptionPane.showMessageDialog(null, "Consulta cadastrada com sucesso!");// TODO// TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -1085,26 +1126,12 @@ public class TelaTeste extends javax.swing.JFrame {
         jTextField21.setText("");
         jTextField22.setText("");
         
+        getTratamento();
         JOptionPane.showMessageDialog(null, "Tratamento cadastrada com sucesso!"); // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-  DefaultTableModel dm = (DefaultTableModel)jTable4.getModel();
-       dm.getDataVector().removeAllElements();
-       dm.fireTableDataChanged(); 
-       
-      int row= jTable3.getSelectedRow();
-      
-      int column = jTable3.getSelectedColumn();
-      
-      
-
-        int idCliente = (int) jTable3.getValueAt(row, 0);
-          List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(idCliente);
   
-       for(Animal a : animais){
-       model2.addRow(new Object[]{a.getId(), a.getNome(), a.getSexo(),a.getIdade(),a.getIdEspecie(),a.getIdCliente()});
-       }        // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void jTable3InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable3InputMethodTextChanged
@@ -1259,9 +1286,114 @@ public class TelaTeste extends javax.swing.JFrame {
       //  System.out.println(row +" " +column);
      //   System.out.println(jTable3.getValueAt(row,2).toString());
          int idExame = (int) jTable5.getValueAt(row, 0);
-        Exame exame = new Exame(idExame,(String)jTable2.getValueAt(row,1),1);
+        Exame exame = new Exame(idExame,(String)jTable5.getValueAt(row,1),1);
         ExameDAO.getInstance().update(exame);// TODO add your handling code here:
     }//GEN-LAST:event_jTable5MouseClicked
+
+    private void jTable4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseEntered
+       DefaultTableModel dm = (DefaultTableModel)jTable4.getModel();
+       dm.getDataVector().removeAllElements();
+       dm.fireTableDataChanged(); 
+       
+      int row= jTable3.getSelectedRow();
+      
+      int column = jTable3.getSelectedColumn();
+      
+      
+
+        int idCliente = (int) jTable3.getValueAt(row, 0);
+          List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(idCliente);
+  
+       for(Animal a : animais){
+       model2.addRow(new Object[]{a.getId(), a.getNome(), a.getSexo(),a.getIdade(),a.getIdEspecie(),a.getIdCliente()});
+       }        // TODO add your handling code here: // TODO add your handling code here:
+    }//GEN-LAST:event_jTable4MouseEntered
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+          if(evt.getKeyCode() == 127)
+{
+    
+    int input = JOptionPane.showConfirmDialog(null, 
+                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
+
+	// 0=yes, 1=no, 2=cancel
+	if (input==0){
+            int row= jTable1.getSelectedRow();
+      
+      int column = jTable1.getSelectedColumn();
+      
+      
+
+        int idVet = (int) jTable1.getValueAt(row, 0);
+        Veterinario vet = new Veterinario(idVet,(String)jTable1.getValueAt(row,1),(String)jTable1.getValueAt(row,2),(String)jTable1.getValueAt(row,3));
+        VeterinarioDAO.getInstance().delete(vet);
+        
+        
+        getVet();
+            
+        }
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    }
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int row= jTable1.getSelectedRow();
+      
+      int column = jTable1.getSelectedColumn();
+      
+      
+        
+            
+        
+      //  System.out.println((String) jTable3.getValueAt(row,1));
+      //  System.out.println(row +" " +column);
+     //   System.out.println(jTable3.getValueAt(row,2).toString());
+         int idVet = (int) jTable1.getValueAt(row, 0);
+        Veterinario vet = new Veterinario(idVet,(String)jTable1.getValueAt(row,1),(String)jTable1.getValueAt(row,2),(String)jTable1.getValueAt(row,3));
+        VeterinarioDAO.getInstance().update(vet);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable7KeyPressed
+        if(evt.getKeyCode() == 127)
+{
+    
+    int input = JOptionPane.showConfirmDialog(null, 
+                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
+
+	// 0=yes, 1=no, 2=cancel
+	if (input==0){
+            int row= jTable7.getSelectedRow();
+      
+      int column = jTable7.getSelectedColumn();
+      
+      
+
+        int idVet = (int) jTable7.getValueAt(row, 0);
+        Tratamento tra = new Tratamento(idVet,(String)jTable7.getValueAt(row,1),(String)jTable7.getValueAt(row,2),(String)jTable7.getValueAt(row,3),1, true);
+        TratamentoDAO.getInstance().delete(tra);
+        
+        
+        getTratamento();
+            
+        }
+    }//GEN-LAST:event_jTable7KeyPressed
+    }
+    
+    private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
+           int row= jTable7.getSelectedRow();
+      
+      int column = jTable7.getSelectedColumn();
+      
+      
+        
+            
+        
+      //  System.out.println((String) jTable3.getValueAt(row,1));
+      //  System.out.println(row +" " +column);
+     //   System.out.println(jTable3.getValueAt(row,2).toString());
+         int idVet = (int) jTable7.getValueAt(row, 0);
+        Veterinario vet = new Veterinario(idVet,(String)jTable7.getValueAt(row,1),(String)jTable7.getValueAt(row,2),(String)jTable7.getValueAt(row,3));
+        VeterinarioDAO.getInstance().update(vet);
+    }//GEN-LAST:event_jTable7MouseClicked
     
     
     
