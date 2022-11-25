@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.clinicamaven;
+package View;
 
 import Model.Animal;
 import Model.AnimalDAO;
@@ -19,15 +19,7 @@ import Model.TratamentoDAO;
 import Model.Veterinario;
 import Model.VeterinarioDAO;
 import static java.lang.Integer.parseInt;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.DefaultListModel;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,9 +27,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Bruno
  */
-public class TelaTeste extends javax.swing.JFrame {
+public class View extends javax.swing.JFrame {
 
-    
     DefaultTableModel model = new DefaultTableModel();
     DefaultTableModel model2 = new DefaultTableModel();
     DefaultTableModel model3 = new DefaultTableModel();
@@ -45,11 +36,12 @@ public class TelaTeste extends javax.swing.JFrame {
     DefaultTableModel model5 = new DefaultTableModel();
     DefaultTableModel model6 = new DefaultTableModel();
     DefaultTableModel model7 = new DefaultTableModel();
+
     /**
      * Creates new form TelaTeste
      */
-    public TelaTeste() {
-        
+    public View() {
+
         initComponents();
         initFields();
         populateTable();
@@ -59,15 +51,11 @@ public class TelaTeste extends javax.swing.JFrame {
         getConsulta();
         getTratamento();
         getCliente();
-        
-    
+
     }
-    
-  
-    
-    
-    public void populateTable(){
-       
+
+    public void populateTable() {
+
         model.addColumn("id");
         model.addColumn("nome");
         model.addColumn("endereco");
@@ -75,8 +63,7 @@ public class TelaTeste extends javax.swing.JFrame {
         model.addColumn("email");
         model.addColumn("telefone");
         jTable3.setModel(model);
-        
-        
+
         model2.addColumn("id");
         model2.addColumn("nome");
         model2.addColumn("sexo");
@@ -84,22 +71,22 @@ public class TelaTeste extends javax.swing.JFrame {
         model2.addColumn("idEspecie");
         model2.addColumn("idCliente");
         jTable4.setModel(model2);
-        
+
         model3.addColumn("id");
         model3.addColumn("nome");
         model3.addColumn("email");
         model3.addColumn("telefone");
         jTable1.setModel(model3);
-        
+
         model4.addColumn("id");
         model4.addColumn("nome");
         jTable2.setModel(model4);
-        
+
         model5.addColumn("id");
         model5.addColumn("descricao");
         model5.addColumn("idConsulta");
         jTable5.setModel(model5);
-        
+
         model6.addColumn("id");
         model6.addColumn("data");
         model6.addColumn("historico");
@@ -109,7 +96,7 @@ public class TelaTeste extends javax.swing.JFrame {
         model6.addColumn("terminou");
         model6.addColumn("hora");
         jTable6.setModel(model6);
-        
+
         model7.addColumn("id");
         model7.addColumn("nome");
         model7.addColumn("data inicial");
@@ -117,13 +104,10 @@ public class TelaTeste extends javax.swing.JFrame {
         model7.addColumn("idAnimal");
         model7.addColumn("terminou");
         jTable7.setModel(model7);
-        
-        
+
     }
-    
-    
-    
-    private void initFields(){
+
+    private void initFields() {
         jTextField1.setText("");
         jTextField2.setText("");
         jTextField3.setText("");
@@ -146,109 +130,68 @@ public class TelaTeste extends javax.swing.JFrame {
         jTextField20.setText("");
         jTextField21.setText("");
         jTextField22.setText("");
-        
+
         jTable3.getModel().addTableModelListener(jTable3);
     }
 
-    
-      private void getVet(){
-          
-          DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
-       dm.getDataVector().removeAllElements();
-       dm.fireTableDataChanged();
-          List<Veterinario> veterinarios = VeterinarioDAO.getInstance().retrieveAll();
-     
-       for(Veterinario v : veterinarios){
-           
-           model3.addRow(new Object[]{v.getId(), v.getNome(),v.getEmail(),v.getTelefone()});
-       }
-
-      }
-    
-      
-      
-       
-       private void getEsp(){
-           
-            DefaultTableModel dm = (DefaultTableModel)jTable2.getModel();
-       dm.getDataVector().removeAllElements();
-       dm.fireTableDataChanged();
-          List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
-     
-       for(Especie e : especies){
-           
-           model4.addRow(new Object[]{e.getId(), e.getNome()});
-       }
-
-     
-    }
-       
-       private void getExa(){
-           
-           DefaultTableModel dm = (DefaultTableModel)jTable5.getModel();
-       dm.getDataVector().removeAllElements();
-       dm.fireTableDataChanged();
-          List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
-           
-          List<Exame> exames = ExameDAO.getInstance().retrieveAll();
-     
-       for(Exame e : exames){
-           
-           model5.addRow(new Object[]{e.getId(), e.getDescricao(), e.getIdConsulta()});
-       }
-
-     
-    }
-       
-        private void getConsulta(){
-          List<Consulta> consultas = ConsultaDAO.getInstance().retrieveAll();
-     
-       for(Consulta c : consultas){
-           
-           model6.addRow(new Object[]{c.getId(), c.getData(), c.getHistorico(), c.getIdVet(),c.getIdTratamento(),c.getIdAnimal(), c.isTerminou(),c.getHora()});
-       }
-
-     
-    }
-        
-        private void getTratamento(){
-            
-            DefaultTableModel dm = (DefaultTableModel)jTable7.getModel();
-       dm.getDataVector().removeAllElements();
-       dm.fireTableDataChanged();
-          List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
-            
-          List<Tratamento> tratamentos = TratamentoDAO.getInstance().retrieveAll();
-     
-       for(Tratamento t : tratamentos){
-           
-           model7.addRow(new Object[]{t.getId(), t.getNome(), t.getData_ini(), t.getData_final(),t.getIdAnimal(), t.isTerminou()});
-       }
-
-     
-    }
-        
-        private void getCliente(){
-            
-            DefaultTableModel dm = (DefaultTableModel)jTable3.getModel();
-       dm.getDataVector().removeAllElements();
-       dm.fireTableDataChanged();
-       
-          List<Cliente> clientes = ClienteDAO.getInstance().retrieveAll();
-    
-       for(Cliente c : clientes){
-           
-           model.addRow(new Object[]{c.getId(), c.getNome(), c.getEndereco(),c.getCep(),c.getEmail(),c.getTelefone()});
-       }
-
-            
+    private void getVet() {
+        DefaultTableModel dm = (DefaultTableModel) jTable1.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
+        List<Veterinario> veterinarios = VeterinarioDAO.getInstance().retrieveAll();
+        for (Veterinario v : veterinarios) {
+            model3.addRow(new Object[]{v.getId(), v.getNome(), v.getEmail(), v.getTelefone()});
         }
-        
-        
-        
-        
-        
-       
+    }
+
+    private void getEsp() {
+        DefaultTableModel dm = (DefaultTableModel) jTable2.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
+        List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
+        for (Especie e : especies) {
+            model4.addRow(new Object[]{e.getId(), e.getNome()});
+        }
+
+    }
+
+    private void getExa() {
+        DefaultTableModel dm = (DefaultTableModel) jTable5.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
+        List<Exame> exames = ExameDAO.getInstance().retrieveAll();
+        for (Exame e : exames) {
+            model5.addRow(new Object[]{e.getId(), e.getDescricao(), e.getIdConsulta()});
+        }
+    }
+
+    private void getConsulta() {
+        List<Consulta> consultas = ConsultaDAO.getInstance().retrieveAll();
+        for (Consulta c : consultas) {
+            model6.addRow(new Object[]{c.getId(), c.getData(), c.getHistorico(), c.getIdVet(), c.getIdTratamento(), c.getIdAnimal(), c.isTerminou(), c.getHora()});
+        }
+    }
+
+    private void getTratamento() {
+        DefaultTableModel dm = (DefaultTableModel) jTable7.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
+        List<Tratamento> tratamentos = TratamentoDAO.getInstance().retrieveAll();
+        for (Tratamento t : tratamentos) {
+            model7.addRow(new Object[]{t.getId(), t.getNome(), t.getData_ini(), t.getData_final(), t.getIdAnimal(), t.isTerminou()});
+        }
+    }
+
+    private void getCliente() {
+        DefaultTableModel dm = (DefaultTableModel) jTable3.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
+        List<Cliente> clientes = ClienteDAO.getInstance().retrieveAll();
+        for (Cliente c : clientes) {
+            model.addRow(new Object[]{c.getId(), c.getNome(), c.getEndereco(), c.getCep(), c.getEmail(), c.getTelefone()});
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1028,377 +971,211 @@ public class TelaTeste extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        DefaultTableModel dm = (DefaultTableModel)jTable3.getModel();
-       dm.getDataVector().removeAllElements();
-       dm.fireTableDataChanged();
+        DefaultTableModel dm = (DefaultTableModel) jTable3.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
         List<Cliente> clientes = ClienteDAO.getInstance().retrieveBySimilarName(jTextField1.getText());
-    
-       for(Cliente c : clientes){
-           
-           model.addRow(new Object[]{c.getId(), c.getNome(), c.getEndereco(),c.getCep(),c.getEmail(),c.getTelefone()});
-       }// TODO add your handling code here:
+        for (Cliente c : clientes) {
+            model.addRow(new Object[]{c.getId(), c.getNome(), c.getEndereco(), c.getCep(), c.getEmail(), c.getTelefone()});
+        }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        AnimalDAO.getInstance().create(jTextField7.getText(), jTextField8.getText(), parseInt(jTextField9.getText()), 1,1);
-        
-        
+        AnimalDAO.getInstance().create(jTextField7.getText(), jTextField8.getText(), parseInt(jTextField9.getText()), 1, 1);
         jTextField7.setText("");
         jTextField8.setText("");
         jTextField9.setText("");
-        
         JOptionPane.showMessageDialog(null, "Animal cadastrado com sucesso!");
-
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         ClienteDAO.getInstance().create(jTextField2.getText(), jTextField4.getText(), jTextField3.getText(), jTextField5.getText(), jTextField6.getText());
-        
-        
         jTextField2.setText("");
         jTextField4.setText("");
         jTextField3.setText("");
         jTextField5.setText("");
         jTextField6.setText("");
-        
         getCliente();
-        
         JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
-        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         VeterinarioDAO.getInstance().create(jTextField10.getText(), jTextField11.getText(), jTextField12.getText());
-        
-        
         jTextField10.setText("");
         jTextField11.setText("");
         jTextField12.setText("");
-        
         getVet();
         JOptionPane.showMessageDialog(null, "Veterinario cadastrado com sucesso!");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         EspecieDAO.getInstance().create(jTextField13.getText());
-        
-        
         jTextField13.setText("");
-        
-        
-        
         JOptionPane.showMessageDialog(null, "Especie cadastrada com sucesso!");
-        
         getEsp();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        ExameDAO.getInstance().create(jTextField14.getText(),1);
-        
-        
+        ExameDAO.getInstance().create(jTextField14.getText(), 1);
         jTextField14.setText("");
-        
         getExa();
         JOptionPane.showMessageDialog(null, "Exame cadastrado com sucesso!");// TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        ConsultaDAO.getInstance().create(jTextField15.getText(),jTextField16.getText(),parseInt(jTextField17.getText()),parseInt(jTextField18.getText()),1,true,1);
-        
-        
+        ConsultaDAO.getInstance().create(jTextField15.getText(), jTextField16.getText(), parseInt(jTextField17.getText()), parseInt(jTextField18.getText()), 1, true, 1);
         jTextField15.setText("");
         jTextField16.setText("");
         jTextField17.setText("");
         jTextField18.setText("");
-        
         getConsulta();
         JOptionPane.showMessageDialog(null, "Consulta cadastrada com sucesso!");// TODO// TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-          TratamentoDAO.getInstance().create(jTextField19.getText(),jTextField20.getText(),jTextField21.getText(),parseInt(jTextField22.getText()),true);
-        
-        
+        TratamentoDAO.getInstance().create(jTextField19.getText(), jTextField20.getText(), jTextField21.getText(), parseInt(jTextField22.getText()), true);
         jTextField19.setText("");
         jTextField20.setText("");
         jTextField21.setText("");
         jTextField22.setText("");
-        
         getTratamento();
         JOptionPane.showMessageDialog(null, "Tratamento cadastrada com sucesso!"); // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-  
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void jTable3InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable3InputMethodTextChanged
-        /*   int row= jTable3.getSelectedRow();
-      
-      int column = jTable3.getSelectedColumn();
-      
-      
-
-        int idCliente = (int) jTable3.getValueAt(row, column);
-            
-        
-      //  System.out.println((String) jTable3.getValueAt(row,1));
-      //  System.out.println(row +" " +column);
-     //   System.out.println(jTable3.getValueAt(row,2).toString());
-        Cliente cliente = new Cliente(idCliente,(String)jTable3.getValueAt(row,1),(String)jTable3.getValueAt(row,2),(String)jTable3.getValueAt(row,3),(String)jTable3.getValueAt(row,4),(String)jTable3.getValueAt(row,5));
-        ClienteDAO.getInstance().update(cliente);
-        // TODO add your handling code here:
-        */
+ 
     }//GEN-LAST:event_jTable3InputMethodTextChanged
 
     private void jTable3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MousePressed
-         
+
     }//GEN-LAST:event_jTable3MousePressed
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
-         int row= jTable3.getSelectedRow();
-      
-      int column = jTable3.getSelectedColumn();
-      
-      
+        int row = jTable3.getSelectedRow();
         int idCliente = (int) jTable3.getValueAt(row, 0);
-            
-        
-      //  System.out.println((String) jTable3.getValueAt(row,1));
-      //  System.out.println(row +" " +column);
-     //   System.out.println(jTable3.getValueAt(row,2).toString());
-        Cliente cliente = new Cliente(idCliente,(String)jTable3.getValueAt(row,1),(String)jTable3.getValueAt(row,2),(String)jTable3.getValueAt(row,3),(String)jTable3.getValueAt(row,4),(String)jTable3.getValueAt(row,5));
+        Cliente cliente = new Cliente(idCliente, (String) jTable3.getValueAt(row, 1), (String) jTable3.getValueAt(row, 2), (String) jTable3.getValueAt(row, 3), (String) jTable3.getValueAt(row, 4), (String) jTable3.getValueAt(row, 5));
         ClienteDAO.getInstance().update(cliente);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void jTable3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable3KeyPressed
-        if(evt.getKeyCode() == 127)
-{
-    
-    int input = JOptionPane.showConfirmDialog(null, 
-                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
-
-	// 0=yes, 1=no, 2=cancel
-	if (input==0){
-            int row= jTable3.getSelectedRow();
-      
-      int column = jTable3.getSelectedColumn();
-      
-      
-
-        int idCliente = (int) jTable3.getValueAt(row, 0);
-        Cliente cliente = new Cliente(idCliente,(String)jTable3.getValueAt(row,1),(String)jTable3.getValueAt(row,2),(String)jTable3.getValueAt(row,3),(String)jTable3.getValueAt(row,4),(String)jTable3.getValueAt(row,5));
-        ClienteDAO.getInstance().delete(cliente);
-        
-        
-        getCliente();
-            
+        if (evt.getKeyCode() == 127) {
+            int input = JOptionPane.showConfirmDialog(null,
+                    "Você realmente deseja excluir esse registro?", "Selecione uma opção...", JOptionPane.YES_NO_OPTION);
+            // 0=yes, 1=no, 2=cancel
+            if (input == 0) {
+                int row = jTable3.getSelectedRow();
+                int idCliente = (int) jTable3.getValueAt(row, 0);
+                
+                //delCli(jTable3,idCliente)
+                Cliente cliente = new Cliente(idCliente, (String) jTable3.getValueAt(row, 1), (String) jTable3.getValueAt(row, 2), (String) jTable3.getValueAt(row, 3), (String) jTable3.getValueAt(row, 4), (String) jTable3.getValueAt(row, 5));
+                ClienteDAO.getInstance().delete(cliente);
+                getCliente();
+            }
         }
-}
     }//GEN-LAST:event_jTable3KeyPressed
 
     private void jTable2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable2KeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == 127)
-{
-    
-    int input = JOptionPane.showConfirmDialog(null, 
-                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
-
-	// 0=yes, 1=no, 2=cancel
-	if (input==0){
-            int row= jTable2.getSelectedRow();
-      
-      int column = jTable2.getSelectedColumn();
-      
-      
-
-        int idEspecie = (int) jTable2.getValueAt(row, 0);
-        Especie especie = new Especie(idEspecie,(String)jTable2.getValueAt(row,1));
-        EspecieDAO.getInstance().delete(especie);
-        
-        
-        getEsp();
-            
+        if (evt.getKeyCode() == 127) {
+            int input = JOptionPane.showConfirmDialog(null,
+                    "Você realmente deseja excluir esse registro?", "Selecione uma opção...", JOptionPane.YES_NO_OPTION);
+            // 0=yes, 1=no, 2=cancel
+            if (input == 0) {
+                int row = jTable2.getSelectedRow();
+                int idEspecie = (int) jTable2.getValueAt(row, 0);
+                Especie especie = new Especie(idEspecie, (String) jTable2.getValueAt(row, 1));
+                EspecieDAO.getInstance().delete(especie);
+                getEsp();
+            }
         }
-}
     }//GEN-LAST:event_jTable2KeyPressed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
- int row= jTable2.getSelectedRow();
-      
-      int column = jTable2.getSelectedColumn();
-      
-      
-        
-            
-        
-      //  System.out.println((String) jTable3.getValueAt(row,1));
-      //  System.out.println(row +" " +column);
-     //   System.out.println(jTable3.getValueAt(row,2).toString());
-         int idEspecie = (int) jTable2.getValueAt(row, 0);
-        Especie especie = new Especie(idEspecie,(String)jTable2.getValueAt(row,1));
+        int row = jTable2.getSelectedRow();
+        int idEspecie = (int) jTable2.getValueAt(row, 0);
+        Especie especie = new Especie(idEspecie, (String) jTable2.getValueAt(row, 1));
         EspecieDAO.getInstance().update(especie);
-        // TODO add your handling code here:        // TODO add your handling code here:
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jTable5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable5KeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == 127)
-{
-    
-    int input = JOptionPane.showConfirmDialog(null, 
-                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
-
-	// 0=yes, 1=no, 2=cancel
-	if (input==0){
-            int row= jTable5.getSelectedRow();
-      
-      int column = jTable5.getSelectedColumn();
-      
-      
-
-        int idExame = (int) jTable5.getValueAt(row, 0);
-        Exame exame = new Exame(idExame,(String)jTable5.getValueAt(row,1),1);
-        ExameDAO.getInstance().delete(exame);
-        
-        
-        getExa();
-            
-        } // TODO add your handling code here:
+    if (evt.getKeyCode() == 127) {
+            int input = JOptionPane.showConfirmDialog(null,
+                    "Você realmente deseja excluir esse registro?", "Selecione uma opção...", JOptionPane.YES_NO_OPTION);
+            // 0=yes, 1=no, 2=cancel
+            if (input == 0) {
+                int row = jTable5.getSelectedRow();
+                int idExame = (int) jTable5.getValueAt(row, 0);
+                Exame exame = new Exame(idExame, (String) jTable5.getValueAt(row, 1), 1);
+                ExameDAO.getInstance().delete(exame);
+                getExa();
+            }
     }//GEN-LAST:event_jTable5KeyPressed
 
-        
     }
     private void jTable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MouseClicked
-        int row= jTable5.getSelectedRow();
-      
-      int column = jTable5.getSelectedColumn();
-      
-      
-        
-            
-        
-      //  System.out.println((String) jTable3.getValueAt(row,1));
-      //  System.out.println(row +" " +column);
-     //   System.out.println(jTable3.getValueAt(row,2).toString());
-         int idExame = (int) jTable5.getValueAt(row, 0);
-        Exame exame = new Exame(idExame,(String)jTable5.getValueAt(row,1),1);
-        ExameDAO.getInstance().update(exame);// TODO add your handling code here:
+        int row = jTable5.getSelectedRow();
+        int idExame = (int) jTable5.getValueAt(row, 0);
+        Exame exame = new Exame(idExame, (String) jTable5.getValueAt(row, 1), 1);
+        ExameDAO.getInstance().update(exame);
     }//GEN-LAST:event_jTable5MouseClicked
 
     private void jTable4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseEntered
-       DefaultTableModel dm = (DefaultTableModel)jTable4.getModel();
-       dm.getDataVector().removeAllElements();
-       dm.fireTableDataChanged(); 
-       
-      int row= jTable3.getSelectedRow();
-      
-      int column = jTable3.getSelectedColumn();
-      
-      
-
+        DefaultTableModel dm = (DefaultTableModel) jTable4.getModel();
+        dm.getDataVector().removeAllElements();
+        dm.fireTableDataChanged();
+        int row = jTable3.getSelectedRow();
         int idCliente = (int) jTable3.getValueAt(row, 0);
-          List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(idCliente);
-  
-       for(Animal a : animais){
-       model2.addRow(new Object[]{a.getId(), a.getNome(), a.getSexo(),a.getIdade(),a.getIdEspecie(),a.getIdCliente()});
-       }        // TODO add your handling code here: // TODO add your handling code here:
+        List<Animal> animais = AnimalDAO.getInstance().retrieveByIdCliente(idCliente);
+        for (Animal a : animais) {
+            model2.addRow(new Object[]{a.getId(), a.getNome(), a.getSexo(), a.getIdade(), a.getIdEspecie(), a.getIdCliente()});
+        }
     }//GEN-LAST:event_jTable4MouseEntered
 
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
-          if(evt.getKeyCode() == 127)
-{
-    
-    int input = JOptionPane.showConfirmDialog(null, 
-                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
-
-	// 0=yes, 1=no, 2=cancel
-	if (input==0){
-            int row= jTable1.getSelectedRow();
-      
-      int column = jTable1.getSelectedColumn();
-      
-      
-
-        int idVet = (int) jTable1.getValueAt(row, 0);
-        Veterinario vet = new Veterinario(idVet,(String)jTable1.getValueAt(row,1),(String)jTable1.getValueAt(row,2),(String)jTable1.getValueAt(row,3));
-        VeterinarioDAO.getInstance().delete(vet);
-        
-        
-        getVet();
-            
-        }
+        if (evt.getKeyCode() == 127) {
+            int input = JOptionPane.showConfirmDialog(null,
+                    "Você realmente deseja excluir esse registro?", "Selecione uma opção...", JOptionPane.YES_NO_OPTION);
+            // 0=yes, 1=no, 2=cancel
+            if (input == 0) {
+                int row = jTable1.getSelectedRow();
+                int idVet = (int) jTable1.getValueAt(row, 0);
+                Veterinario vet = new Veterinario(idVet, (String) jTable1.getValueAt(row, 1), (String) jTable1.getValueAt(row, 2), (String) jTable1.getValueAt(row, 3));
+                VeterinarioDAO.getInstance().delete(vet);
+                getVet();
+            }
     }//GEN-LAST:event_jTable1KeyPressed
-
     }
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int row= jTable1.getSelectedRow();
-      
-      int column = jTable1.getSelectedColumn();
-      
-      
-        
-            
-        
-      //  System.out.println((String) jTable3.getValueAt(row,1));
-      //  System.out.println(row +" " +column);
-     //   System.out.println(jTable3.getValueAt(row,2).toString());
-         int idVet = (int) jTable1.getValueAt(row, 0);
-        Veterinario vet = new Veterinario(idVet,(String)jTable1.getValueAt(row,1),(String)jTable1.getValueAt(row,2),(String)jTable1.getValueAt(row,3));
+        int row = jTable1.getSelectedRow();
+        int idVet = (int) jTable1.getValueAt(row, 0);
+        Veterinario vet = new Veterinario(idVet, (String) jTable1.getValueAt(row, 1), (String) jTable1.getValueAt(row, 2), (String) jTable1.getValueAt(row, 3));
         VeterinarioDAO.getInstance().update(vet);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable7KeyPressed
-        if(evt.getKeyCode() == 127)
-{
-    
-    int input = JOptionPane.showConfirmDialog(null, 
-                "Você realmente deseja excluir esse registro?", "Selecione uma opção...",JOptionPane.YES_NO_OPTION);
-
-	// 0=yes, 1=no, 2=cancel
-	if (input==0){
-            int row= jTable7.getSelectedRow();
-      
-      int column = jTable7.getSelectedColumn();
-      
-      
-
-        int idVet = (int) jTable7.getValueAt(row, 0);
-        Tratamento tra = new Tratamento(idVet,(String)jTable7.getValueAt(row,1),(String)jTable7.getValueAt(row,2),(String)jTable7.getValueAt(row,3),1, true);
-        TratamentoDAO.getInstance().delete(tra);
-        
-        
-        getTratamento();
-            
-        }
+        if (evt.getKeyCode() == 127) {
+            int input = JOptionPane.showConfirmDialog(null,
+                    "Você realmente deseja excluir esse registro?", "Selecione uma opção...", JOptionPane.YES_NO_OPTION);
+            // 0=yes, 1=no, 2=cancel
+            if (input == 0) {
+                int row = jTable7.getSelectedRow();
+                int idTra = (int) jTable7.getValueAt(row, 0);
+                Tratamento tra = new Tratamento(idTra, (String) jTable7.getValueAt(row, 1), (String) jTable7.getValueAt(row, 2), (String) jTable7.getValueAt(row, 3), 1, true);
+                TratamentoDAO.getInstance().delete(tra);
+                getTratamento();
+            }
     }//GEN-LAST:event_jTable7KeyPressed
     }
-    
+
     private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
-           int row= jTable7.getSelectedRow();
-      
-      int column = jTable7.getSelectedColumn();
-      
-      
-        
-            
-        
-      //  System.out.println((String) jTable3.getValueAt(row,1));
-      //  System.out.println(row +" " +column);
-     //   System.out.println(jTable3.getValueAt(row,2).toString());
-         int idVet = (int) jTable7.getValueAt(row, 0);
-        Veterinario vet = new Veterinario(idVet,(String)jTable7.getValueAt(row,1),(String)jTable7.getValueAt(row,2),(String)jTable7.getValueAt(row,3));
-        VeterinarioDAO.getInstance().update(vet);
+        int row = jTable7.getSelectedRow();
+        int idTra = (int) jTable7.getValueAt(row, 0);
+        Tratamento tra = new Tratamento(idTra, (String) jTable7.getValueAt(row, 1), (String) jTable7.getValueAt(row, 2), (String) jTable7.getValueAt(row, 3), 1, true);
+        TratamentoDAO.getInstance().update(tra);
     }//GEN-LAST:event_jTable7MouseClicked
-    
-    
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -1416,25 +1193,26 @@ public class TelaTeste extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaTeste.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaTeste().setVisible(true);
+                new View().setVisible(true);
             }
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
