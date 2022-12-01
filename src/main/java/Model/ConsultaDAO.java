@@ -88,6 +88,39 @@ public class ConsultaDAO extends DAO {
         return this.retrieve("SELECT * FROM consulta");
     }
     
+    
+    /*
+    
+    data - tabela consulta
+    nome cliente - tabela consulta, tem o id do animal q tem o id do cliente na tabela consulta
+    nome animal - tem o id do animal na tabela consulta e da pra pegar o nome 
+    nome vet - tem o id do vet na tabela consulta e da pra pegar o nome
+    
+    
+    SELECT
+    P.nome,
+    P.preco,
+    C.nome as Categoria
+FROM
+    produto P
+INNER JOIN
+  categoria_produto C
+ON P.id_categoria = C.id
+    
+    
+    SELECT
+    c.data, 
+    v.nome as Veterinario
+    
+    FROM
+    consulta C
+    INNER JOIN
+    id_vet v
+    ON 
+    C.idVet = v.id
+    
+    */
+    
     // RetrieveLast
     public List retrieveLast(){
         return this.retrieve("SELECT * FROM consulta WHERE id = " + lastId("consulta","id"));
