@@ -41,8 +41,8 @@ public class ConsultaDAO extends DAO {
             stmt.setInt(3, idVet);
             stmt.setInt(4, idTratamento);
             stmt.setInt(5, idAnimal);
-            stmt.setBoolean(5, terminou);
-            stmt.setInt(5, hora);
+            stmt.setBoolean(6, terminou);
+            stmt.setInt(7, hora);
             executeUpdate(stmt);
         } catch (SQLException ex) {
             Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, ex);
