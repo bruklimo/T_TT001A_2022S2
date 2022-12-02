@@ -1,0 +1,14 @@
+Até agora temos o crud.
+
+Podemos fazer 2 telas ou partes, para o vet e secretaria
+secretaria (cliente, animal, consulta) 
+veterinario (exame, consulta, tratamento)
+historico (text box)
+colocar o id como index do selectbox 
+deixar mais bonito
+abranger buscas
+input tipo date 
+ver funcoes de editar e excluir e cadastrar ja que mudou de local
+colocar funcoes em controllers e nao so na view
+filtro de consultas por data
+documentar codigo
