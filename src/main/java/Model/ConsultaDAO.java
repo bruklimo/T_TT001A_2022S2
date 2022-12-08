@@ -136,6 +136,13 @@ ON P.id_categoria = C.id
     public List retrieveBySimilarName(String nome) {
         return this.retrieve("SELECT * FROM consulta WHERE nome LIKE '%" + nome + "%'");
     }    
+    
+     // RetrieveByDate
+    public List retrieveByDate(String data) {
+        return this.retrieve("SELECT * FROM consulta WHERE data LIKE '%" + data + "%'");
+        
+        //between '2020-01-01' and '2020-01-31'
+    }  
         
     // Updade
     public void update(Consulta consulta) {

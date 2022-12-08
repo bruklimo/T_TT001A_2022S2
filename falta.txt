@@ -3,13 +3,14 @@ Podemos fazer 2 telas ou partes, para o vet e secretaria - ok
 secretaria (cliente, animal, consulta) - ok
 veterinario (exame, consulta, tratamento) - ok
 historico (text box) - ok
-colocar o id como index do selectbox 
+colocar o id como index do selectbox - ok
 deixar mais bonito - +/-
 abranger buscas - ok
 input tipo date - ok
 ver funcoes de editar e excluir e cadastrar ja que mudou de local - ok 
 colocar funcoes em controllers e nao so na view
-filtro de consultas por data
+filtro de consultas por data - ok 
 documentar codigo
-trazer nomes ao inves de id e sim e nao ao inves de true e false
+trazer nomes ao inves de id e sim e nao ao inves de true e false - ok 
 mascara campos
+mudar aba do cliente para primeiro - ok
