@@ -169,9 +169,9 @@ public class View extends javax.swing.JFrame {
     }
 
     private void getEsp() {
-        Object s1[] = {};
-        DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
-        jComboBox2.setModel(model1);
+       String [] s1= new String [1000];
+
+      
 
         DefaultTableModel dm = (DefaultTableModel) jTable2.getModel();
         dm.getDataVector().removeAllElements();
@@ -179,9 +179,11 @@ public class View extends javax.swing.JFrame {
         List<Especie> especies = EspecieDAO.getInstance().retrieveAll();
         for (Especie e : especies) {
             model4.addRow(new Object[]{e.getId(), e.getNome()});
-            jComboBox2.addItem(e.getId() + "-" + e.getNome());
+          //  jComboBox2.addItem(e.getId() + "-" + e.getNome());
+          s1[e.getId()]=e.getNome();
         }
-
+        DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
+        jComboBox2.setModel(model1);
     }
 
     private void getExa() {
@@ -196,9 +198,8 @@ public class View extends javax.swing.JFrame {
 
     private void getConsulta() {
 
-        Object s1[] = {};
-        DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
-        jComboBox3.setModel(model1);
+        String [] s1= new String [100];
+        
 
         DefaultTableModel dm = (DefaultTableModel) jTable6.getModel();
         dm.getDataVector().removeAllElements();
@@ -206,24 +207,29 @@ public class View extends javax.swing.JFrame {
         List<Consulta> consultas = ConsultaDAO.getInstance().retrieveAll();
         for (Consulta c : consultas) {
             model6.addRow(new Object[]{c.getId(), c.getData(), c.getHistorico(), c.getIdVet(), c.getIdTratamento(), c.getIdAnimal(), c.isTerminou(), c.getHora()});
-            jComboBox3.addItem(c.getId() + "-" + c.getHistorico());
+           // jComboBox3.addItem(c.getId() + "-" + c.getHistorico());
+            s1[c.getId()]=c.getHistorico();
         }
+        DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
+        jComboBox3.setModel(model1);
     }
 
     private void getTratamento() {
 
-        Object s1[] = {};
+        String [] s1= new String [100];
 
-        DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
-        jComboBox6.setModel(model1);
+       
         DefaultTableModel dm = (DefaultTableModel) jTable7.getModel();
         dm.getDataVector().removeAllElements();
         dm.fireTableDataChanged();
         List<Tratamento> tratamentos = TratamentoDAO.getInstance().retrieveAll();
         for (Tratamento t : tratamentos) {
             model7.addRow(new Object[]{t.getId(), t.getNome(), t.getData_ini(), t.getData_final(), t.getIdAnimal(), t.isTerminou()});
-            jComboBox6.addItem(t.getId() + "-" + t.getNome());
+            //jComboBox6.addItem(t.getId() + "-" + t.getNome());
+            s1[t.getId()]=t.getNome();
         }
+         DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
+        jComboBox6.setModel(model1);
     }
 
     private void getAnimal2() {
@@ -237,10 +243,9 @@ public class View extends javax.swing.JFrame {
     }
 
     private void getCliente() {
-        Object s1[] = {};
+        String [] s1= new String [100];
 
-        DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
-        jComboBox1.setModel(model1);
+       
 
         DefaultTableModel dm = (DefaultTableModel) jTable3.getModel();
         dm.getDataVector().removeAllElements();
@@ -248,26 +253,18 @@ public class View extends javax.swing.JFrame {
         List<Cliente> clientes = ClienteDAO.getInstance().retrieveAll();
         for (Cliente c : clientes) {
             model.addRow(new Object[]{c.getId(), c.getNome(), c.getEndereco(), c.getCep(), c.getEmail(), c.getTelefone()});
-            jComboBox1.addItem(c.getId() + "-" + c.getNome());
+            //jComboBox1.addItem(c.getId() + "-" + c.getNome());
+            s1[c.getId()]=c.getNome();
         }
+         DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
+        jComboBox1.setModel(model1);
 
     }
 
     private void getAnimal() {
-        Object s1[] = {};
+       String [] s1= new String [100];
+       String [] s2= new String [100];
 
-        DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
-//jComboBox3.setModel(model1); 
-
-        Object s11[] = {};
-
-        DefaultComboBoxModel model11 = new DefaultComboBoxModel(s11);
-        jComboBox4.setModel(model11);
-
-        Object s2[] = {};
-
-        DefaultComboBoxModel model2 = new DefaultComboBoxModel(s2);
-        jComboBox7.setModel(model2);
 
         //  DefaultTableModel dm = (DefaultTableModel) jTable3.getModel();
         // dm.getDataVector().removeAllElements();
@@ -276,10 +273,18 @@ public class View extends javax.swing.JFrame {
         for (Animal a : animais) {
             //  model.addRow(new Object[]{c.getId(), c.getNome(), c.getEndereco(), c.getCep(), c.getEmail(), c.getTelefone()});
             // jComboBox3.addItem(a.getId()+"-"+a.getNome());
-            jComboBox4.addItem(a.getId() + "-" + a.getNome());
-            jComboBox7.addItem(a.getId() + "-" + a.getNome());
+            //jComboBox4.addItem(a.getId() + "-" + a.getNome());
+            //jComboBox7.addItem(a.getId() + "-" + a.getNome());
+            s1[a.getId()]=a.getNome();
+            s2[a.getId()]=a.getNome();
 
         }
+        
+        DefaultComboBoxModel model1 = new DefaultComboBoxModel(s1);
+        jComboBox4.setModel(model1);
+        
+        DefaultComboBoxModel model2 = new DefaultComboBoxModel(s2);
+        jComboBox7.setModel(model2);
 
     }
 
@@ -954,6 +959,11 @@ public class View extends javax.swing.JFrame {
         jLabel22.setText("Veterinário: ");
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
 
         jLabel25.setText("Tratamento:");
 
@@ -1382,7 +1392,7 @@ public class View extends javax.swing.JFrame {
         int idCliente = parseInt(array[0]);
         int idEspecie = parseInt(array2[0]);
 
-        AnimalDAO.getInstance().create(jTextField7.getText(), jTextField8.getText(), parseInt(jTextField9.getText()), idEspecie, idCliente);
+        AnimalDAO.getInstance().create(jTextField7.getText(), jTextField8.getText(), parseInt(jTextField9.getText()), jComboBox2.getSelectedIndex(), jComboBox1.getSelectedIndex());
         jTextField7.setText("");
         jTextField8.setText("");
         jTextField9.setText("");
@@ -1425,7 +1435,7 @@ public class View extends javax.swing.JFrame {
 
         array = nomeConsulta.split("-");
 
-        ExameDAO.getInstance().create(jTextArea2.getText(), parseInt(array[0]));
+        ExameDAO.getInstance().create(jTextArea2.getText(), jComboBox3.getSelectedIndex());
         jTextArea2.setText("");
         getExa();
         JOptionPane.showMessageDialog(null, "Exame cadastrado com sucesso!");// TODO add your handling code here:
@@ -1462,7 +1472,7 @@ public class View extends javax.swing.JFrame {
        int mes = jCalendar2.getMonthChooser().getMonth() +1;
         int ano = jCalendar2.getYearChooser().getYear();
 
-        ConsultaDAO.getInstance().create(""+dia+"/"+mes+"/"+ano+"", jTextArea1.getText(), jComboBox5.getSelectedIndex(), parseInt(array2[0]), parseInt(array3[0]), terminou, parseInt(jTextField18.getText()));
+        ConsultaDAO.getInstance().create(""+dia+"/"+mes+"/"+ano+"", jTextArea1.getText(), jComboBox5.getSelectedIndex(), jComboBox6.getSelectedIndex(), jComboBox7.getSelectedIndex(), terminou, parseInt(jTextField18.getText()));
       //  jTextField15.setText("");
         jTextArea1.setText("");
         //  jTextField17.setText("");
@@ -1497,12 +1507,12 @@ public class View extends javax.swing.JFrame {
         int ano1 = jCalendar3.getYearChooser().getYear();
 
 
-        TratamentoDAO.getInstance().create(jTextField19.getText(), ""+dia+"/"+mes+"/"+ano+"", ""+dia1+"/"+mes1+"/"+ano1+"", parseInt(array[0]), terminou);
+        TratamentoDAO.getInstance().create(jTextField19.getText(), ""+dia+"/"+mes+"/"+ano+"", ""+dia1+"/"+mes1+"/"+ano1+"", jComboBox4.getSelectedIndex(), terminou);
         jTextField19.setText("");
       //  jTextField20.setText("");
      //   jTextField21.setText("");
         getTratamento();
-        JOptionPane.showMessageDialog(null, "Tratamento cadastrada com sucesso!"); // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Tratamento cadastrado com sucesso!"); // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jTable3InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable3InputMethodTextChanged
@@ -1774,6 +1784,10 @@ public class View extends javax.swing.JFrame {
             model5.addRow(new Object[]{e.getId(),e.getDescricao(),e.getIdConsulta()});
         }
     }//GEN-LAST:event_jTextField23ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox5ActionPerformed
 
     /**
      * @param args the command line arguments
