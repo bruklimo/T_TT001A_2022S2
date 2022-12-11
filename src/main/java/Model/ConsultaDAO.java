@@ -144,6 +144,13 @@ ON P.id_categoria = C.id
         //between '2020-01-01' and '2020-01-31'
     }  
     
+     // RetrieveByDate
+    public List retrieveByFinish() {
+        return this.retrieve("SELECT * FROM consulta WHERE terminou = 0 ");
+        
+        //between '2020-01-01' and '2020-01-31'
+    }  
+    
         
     // Updade
     public void update(Consulta consulta) {

@@ -15,3 +15,11 @@ trazer nomes ao inves de id e sim e nao ao inves de true e false - ok
 mascara campos
 mudar aba do cliente para primeiro - ok
 verificar se campo hora faz sentido 
+
+
+
+O sistema permite que a secretária adicione novos clientes, animais, veterinarios e especies.
+
+Enquanto o Veterinário marca uma consulta, exame e tratamento.
+
+Existe uma área apelidada de home onde as consultas mais próximas são mostradas.
