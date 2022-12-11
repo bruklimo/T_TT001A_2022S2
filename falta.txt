@@ -14,3 +14,4 @@ documentar codigo
 trazer nomes ao inves de id e sim e nao ao inves de true e false - ok 
 mascara campos
 mudar aba do cliente para primeiro - ok
+verificar se campo hora faz sentido 
